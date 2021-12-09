@@ -1,0 +1,39 @@
+.container {
+    width: 100%;
+    border-radius: 2%;
+    overflow: hidden;
+}
+
+.cover {
+    position: relative;
+    height: 60%;
+}
+
+.hoverText {
+    position: absolute;
+    z-index: 99;
+    bottom: 5px;
+    color: white;
+    padding: 0 5px;
+    width: 100%;
+}
+
+.title {
+    margin-top: 5px;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
+    -webkit-line-clamp: 2;
+    width: 100%;
+}
+
+.footer {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+

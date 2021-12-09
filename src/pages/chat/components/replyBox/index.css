@@ -1,0 +1,16 @@
+.container {
+    height: 100%;
+}
+.toolBar {
+    height: 18px;
+}
+.li {
+    list-style-type: none;
+    float: left;
+    height: 18px;
+    margin-right: 20px;
+}
+.submitArea {
+    float: right;
+    margin-right: 20px;
+}

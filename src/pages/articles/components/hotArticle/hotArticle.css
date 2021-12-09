@@ -1,0 +1,36 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.indexNumber {
+    color: #ff9607;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.text {
+    width: 60%;
+}
+
+.picture {
+    width: 30%;
+    border-radius: 2%;
+    overflow: hidden;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.footer {
+    color: grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+    margin-top: 10px;
+}

@@ -1,0 +1,52 @@
+.container {
+    width: 80%;
+    margin: 10px auto;
+    background: white;
+    border-radius: 3px;
+    display: flex;
+}
+
+.leftColumn {
+    flex: 2;
+    height: 600px;
+    border-right: #EBEBEB solid 1px;
+}
+
+.searchBar {
+    margin: 20px 25px;
+}
+
+.userList {
+    height: 80%;
+    margin: 0 10px;
+}
+
+.rightColumn {
+    flex: 5;
+    height: 600px;
+}
+
+.topBar {
+    height: 10%;
+    padding-bottom: 9px;
+    padding-top: 21px;
+    margin: 0 14px;
+    text-align: center;
+    border-bottom: #EBEBEB solid 1px;
+}
+
+.messageBox {
+    height: 60%;
+    border-bottom: #EBEBEB solid 1px;
+    margin: 0 14px;
+    overflow: auto;
+}
+
+.inputBox {
+    height: 30%;
+}
+
+.collapse {
+    height: 100%;
+    overflow: auto;
+}

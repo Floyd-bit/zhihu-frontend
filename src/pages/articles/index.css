@@ -1,0 +1,25 @@
+.sitecardborderlesswrapper {
+    padding: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+  }
+
+  .rightColumn {
+      width: 30%;
+  }
+
+  .linkItem {
+      color: #8590A6;
+  }
+
+  .linkItem:hover {
+      background: #F6F6F6;
+  }

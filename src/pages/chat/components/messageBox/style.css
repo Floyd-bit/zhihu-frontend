@@ -1,0 +1,19 @@
+/* tile uploaded pictures */
+.commentaction {
+    padding-left: 8px;
+    cursor: 'auto';
+  }
+  
+  [class*='-col-rtl'] .commentaction {
+    padding-right: 8px;
+    padding-left: 0;
+  }
+
+.container {
+    margin: 20px 20px;
+}
+
+.time {
+    text-align: center;
+    color: grey;
+}
