@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-27 17:39:37
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-10 17:47:14
+ * @LastEditTime: 2021-12-10 17:46:11
  */
 import React, { useCallback, useRef, useState } from "react";
 import { Editor } from '@tinymce/tinymce-react';
@@ -92,8 +92,8 @@ export default () => {
                     image_uploadtab: true,
                 }} />
             <div className="btnGroup" style={{ marginTop: '1em' }}>
-                <Button onClick={log} type='primary'>保存</Button>
-                <Button onClick={()=>{router.push('/articles')}}>取消</Button>
+                <Button onClick={log} style={{ float: 'left', right: '5em' }} type='primary'>保存</Button>
+                <Button onClick={()=>{router.push('/articles')}} style={{ float: 'left' }}>取消</Button>
             </div>
         </div>
 

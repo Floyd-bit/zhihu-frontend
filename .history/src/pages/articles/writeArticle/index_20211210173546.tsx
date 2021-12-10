@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-27 17:39:37
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-10 17:47:14
+ * @LastEditTime: 2021-12-10 17:35:14
  */
 import React, { useCallback, useRef, useState } from "react";
 import { Editor } from '@tinymce/tinymce-react';
@@ -18,7 +18,7 @@ const { TextArea } = Input;
 export default () => {
     const [input, setInput] = useState('');
     const [textInput, setText] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const editorRef = useRef(null);
     const log = () => {
         if (!input.length || !textInput.length) {
@@ -64,14 +64,14 @@ export default () => {
         setInput(e.target.defaultValue)
     },[]);
     return (
-        <div style={{ height: '60vh', margin: '1em' }}>
-            <Spin tip="富文本编辑器加载中..." style={{ visibility: isLoading ? 'visible' : 'hidden', position: 'absolute', top: '20em', left: '40em', zIndex: '99' }}></Spin>
+        <div style={{ height: '60vh' }}>
             <Input size="large" placeholder="请输入文章标题" prefix={<EditOutlined />} maxLength={20} onChange={inputChange} />
             <TextArea rows={4} placeholder="请输入文章摘要" onChange={textChange} />
+            <Spin tip="富文本编辑器加载中..."></Spin>
             <Editor
                 // selector='editorStateRef'
                 apiKey='r98gorx85mnii60u76xmbdf2pwdrgeb0emk5ejkqtz104o2e'
-                onInit={(evt, editor) => {editorRef.current = editor; setIsLoading(false);}}
+                onInit={(evt, editor) => editorRef.current = editor}
                 initialValue="<p>This is the initial content of the editor.</p>"
                 init={{
                     height: '100%',
@@ -91,10 +91,8 @@ export default () => {
                     language: 'zh_CN',
                     image_uploadtab: true,
                 }} />
-            <div className="btnGroup" style={{ marginTop: '1em' }}>
-                <Button onClick={log} type='primary'>保存</Button>
-                <Button onClick={()=>{router.push('/articles')}}>取消</Button>
-            </div>
+            
+            <Button onClick={log} type='primary'>Log editor content</Button>
         </div>
 
     )
