@@ -9,7 +9,7 @@
 # AIU
 
 #### 介紹
-React重构WHU-Animals
+React仿知乎页面
 
 #### 架構
 基于umi框架
