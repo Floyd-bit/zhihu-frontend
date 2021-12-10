@@ -6,7 +6,7 @@
  * @LastEditors: 赵卓轩
  * @LastEditTime: 2021-12-10 01:05:25
 -->
-# AIU
+# 知乎
 
 #### 介紹
 React仿知乎页面
