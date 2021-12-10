@@ -4,10 +4,10 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-06 23:51:37
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-10 16:27:42
+ * @LastEditTime: 2021-12-10 16:22:28
  */
 
-import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from "@ant-design/icons";
+import { CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from "@ant-design/icons";
 import { Button, Divider } from "antd";
 import React from "react";
 import style from './style.css';
@@ -26,8 +26,7 @@ export default function(props: any) {
                 : <div className={style.description}>{props.description}</div>
             }
             <div className={style.footer}>
-                <Button style={{backgroundColor: '#E5EFFF', color:'#0066FF'}}><CaretUpOutlined />赞同</Button>
-                <Button style={{backgroundColor: '#E5EFFF', color:'#0066FF'}}><CaretDownOutlined /></Button>
+                <Button></Button>
                 <span><CommentOutlined />评论</span>
                 <span><SendOutlined />分享</span>
                 <span><StarOutlined />收藏</span>

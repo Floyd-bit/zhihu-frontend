@@ -42,8 +42,7 @@ export default () => {
         setIsLoading(true);
         getArticleByPage({page: currentPage, size: pageSize}).then((res:any) => {
             setArticles(res.result.content);
-            setTimeout(()=>{setIsLoading(false)},1000);
-            
+            // setIsLoading(false);
         })
     }, [currentPage, pageSize]);
 

@@ -1,4 +1,4 @@
-import { Card, Tabs, List, Row, Col, Pagination, Skeleton } from 'antd';
+import { Card, Tabs, List, Row, Col } from 'antd';
 import { EyeOutlined, VideoCameraOutlined, FireOutlined, LikeOutlined, UserOutlined } from '@ant-design/icons';
 import style from './index.css';
 import Animal from './components/article/article';
@@ -31,26 +31,23 @@ const itemToPath = (item:any) => {
     return item.toString();
 }
 
+const defaultParams = {
+    size: 5,
+    page: 2
+}
 
 export default () => {
     const [articles,setArticles] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [pageSize, setPageSize] = useState(10);
-    const [isLoading, setIsLoading] = useState(true);
+    const [params,setParams] = useState(defaultParams);
 
     useEffect(() => {
-        setIsLoading(true);
-        getArticleByPage({page: currentPage, size: pageSize}).then((res:any) => {
+        getArticleByPage(params).then((res:any) => {
             setArticles(res.result.content);
-            setTimeout(()=>{setIsLoading(false)},1000);
-            
         })
-    }, [currentPage, pageSize]);
+    }, []);
 
     const animalList = articles.map((item:any) => 
-        isLoading
-        ? <Skeleton active />
-        : <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} isClick={true}/>
+        <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} isClick={true}/>
     );
 
     const gridClick = useCallback((e:any) => {
@@ -64,61 +61,56 @@ export default () => {
         }
     },[]);
 
-    const pageChange = (page: number) => {
-        console.log(page);
-        setCurrentPage(page);
-    };
-
-    const onShowSizeChange = (current: number, pageSize: number) => {
-        console.log(current, pageSize);
-        setPageSize(pageSize);
-    }
-
     return (
-        <><div className={style.sitecardborderlesswrapper}>
+        <div className={style.sitecardborderlesswrapper}>
             <Card bordered={true} style={{ width: '60%' }}>
                 <Tabs defaultActiveKey="help">
                     <TabPane
-                        tab={<span>
-                            <EyeOutlined />
-                            关注
-                        </span>}
+                        tab={
+                            <span>
+                                <EyeOutlined />
+                                关注
+                            </span>
+                        }
                         key="help"
                     >
                         {animalList}
-                        <div style={{margin: '0 auto'}}>
-                            <Pagination showSizeChanger onShowSizeChange={onShowSizeChange} current={currentPage} total={100} onChange={pageChange} />
-                        </div>
                     </TabPane>
                     <TabPane
-                        tab={<span>
-                            <LikeOutlined />
-                            推荐
-                        </span>}
+                        tab={
+                            <span>
+                                <LikeOutlined />
+                                推荐
+                            </span>
+                        }
                         key="recommend"
                     >
                         {animalList}
                     </TabPane>
                     <TabPane
-                        tab={<span>
-                            <FireOutlined />
-                            热门
-                        </span>}
+                        tab={
+                            <span>
+                                <FireOutlined />
+                                热门
+                            </span>
+                        }
                         key="hot"
                     >
                         <HotArticle title={mockData.title} description={mockData.description} hotNumber={3336} src="https://pic1.zhimg.com/80/v2-1ff047be5330509bb33c34b2f374e7fe_400x224.jpg?source=1940ef5c"></HotArticle>
                     </TabPane>
                     <TabPane
-                        tab={<span>
-                            <VideoCameraOutlined />
-                            视频
-                        </span>}
+                        tab={
+                            <span>
+                                <VideoCameraOutlined />
+                                视频
+                            </span>
+                        }
                         key="videos"
                     >
                         <Row gutter={[16, 16]}>
-                            <Col span={8}><VideoGrid /></Col>
-                            <Col span={8}><VideoGrid /></Col>
-                            <Col span={8}><VideoGrid /></Col>
+                            <Col span={8}><VideoGrid/></Col>
+                            <Col span={8}><VideoGrid/></Col>
+                            <Col span={8}><VideoGrid/></Col>
                         </Row>
                     </TabPane>
                 </Tabs>
@@ -135,16 +127,16 @@ export default () => {
                             <span>(0)</span></div>
                     </div>
                     <Card onClick={gridClick}>
-                        <Card.Grid style={{ width: '25%', textAlign: 'center', cursor: 'pointer' }}>
+                        <Card.Grid style={{width: '25%', textAlign: 'center', cursor: 'pointer'}}>
                             回答
                         </Card.Grid>
-                        <Card.Grid style={{ width: '25%', textAlign: 'center', cursor: 'pointer' }}>
+                        <Card.Grid style={{width: '25%', textAlign: 'center', cursor: 'pointer'}}>
                             发视频
                         </Card.Grid>
-                        <Card.Grid style={{ width: '25%', textAlign: 'center', cursor: 'pointer' }}>
+                        <Card.Grid style={{width: '25%', textAlign: 'center', cursor: 'pointer'}}>
                             写文章
                         </Card.Grid>
-                        <Card.Grid style={{ width: '25%', textAlign: 'center', cursor: 'pointer' }}>
+                        <Card.Grid style={{width: '25%', textAlign: 'center', cursor: 'pointer'}}>
                             写想法
                         </Card.Grid>
                     </Card>
@@ -154,10 +146,10 @@ export default () => {
                         size="small"
                         bordered={false}
                         dataSource={data}
-                        renderItem={(item, index) => <Link to={itemToPath(index)}><List.Item className={style.linkItem}>{item}</List.Item></Link>} />
+                        renderItem={(item, index) => <Link to={itemToPath(index)}><List.Item className={style.linkItem}>{item}</List.Item></Link>}
+                    />
                 </Card>
             </div>
         </div>
-    </>
     )
 }

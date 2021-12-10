@@ -1,4 +1,4 @@
-import { Card, Tabs, List, Row, Col, Pagination, Skeleton } from 'antd';
+import { Card, Tabs, List, Row, Col, Pagination } from 'antd';
 import { EyeOutlined, VideoCameraOutlined, FireOutlined, LikeOutlined, UserOutlined } from '@ant-design/icons';
 import style from './index.css';
 import Animal from './components/article/article';
@@ -31,26 +31,23 @@ const itemToPath = (item:any) => {
     return item.toString();
 }
 
+const defaultParams = {
+    size: 5,
+    page: 1
+}
 
 export default () => {
     const [articles,setArticles] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [pageSize, setPageSize] = useState(10);
-    const [isLoading, setIsLoading] = useState(true);
+    const [params,setParams] = useState(defaultParams);
 
     useEffect(() => {
-        setIsLoading(true);
-        getArticleByPage({page: currentPage, size: pageSize}).then((res:any) => {
+        getArticleByPage(params).then((res:any) => {
             setArticles(res.result.content);
-            setTimeout(()=>{setIsLoading(false)},1000);
-            
         })
-    }, [currentPage, pageSize]);
+    }, []);
 
     const animalList = articles.map((item:any) => 
-        isLoading
-        ? <Skeleton active />
-        : <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} isClick={true}/>
+        <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} isClick={true}/>
     );
 
     const gridClick = useCallback((e:any) => {
@@ -64,16 +61,6 @@ export default () => {
         }
     },[]);
 
-    const pageChange = (page: number) => {
-        console.log(page);
-        setCurrentPage(page);
-    };
-
-    const onShowSizeChange = (current: number, pageSize: number) => {
-        console.log(current, pageSize);
-        setPageSize(pageSize);
-    }
-
     return (
         <><div className={style.sitecardborderlesswrapper}>
             <Card bordered={true} style={{ width: '60%' }}>
@@ -86,9 +73,7 @@ export default () => {
                         key="help"
                     >
                         {animalList}
-                        <div style={{margin: '0 auto'}}>
-                            <Pagination showSizeChanger onShowSizeChange={onShowSizeChange} current={currentPage} total={100} onChange={pageChange} />
-                        </div>
+                        <Pagination style={{margin: '1px auto'}} defaultCurrent={6} total={500} />
                     </TabPane>
                     <TabPane
                         tab={<span>

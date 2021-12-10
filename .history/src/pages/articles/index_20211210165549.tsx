@@ -1,4 +1,4 @@
-import { Card, Tabs, List, Row, Col, Pagination, Skeleton } from 'antd';
+import { Card, Tabs, List, Row, Col, Pagination } from 'antd';
 import { EyeOutlined, VideoCameraOutlined, FireOutlined, LikeOutlined, UserOutlined } from '@ant-design/icons';
 import style from './index.css';
 import Animal from './components/article/article';
@@ -36,21 +36,15 @@ export default () => {
     const [articles,setArticles] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
-    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        setIsLoading(true);
         getArticleByPage({page: currentPage, size: pageSize}).then((res:any) => {
             setArticles(res.result.content);
-            setTimeout(()=>{setIsLoading(false)},1000);
-            
         })
     }, [currentPage, pageSize]);
 
     const animalList = articles.map((item:any) => 
-        isLoading
-        ? <Skeleton active />
-        : <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} isClick={true}/>
+        <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} isClick={true}/>
     );
 
     const gridClick = useCallback((e:any) => {

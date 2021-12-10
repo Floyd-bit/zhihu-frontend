@@ -26,8 +26,8 @@ export default function(props: any) {
                 : <div className={style.description}>{props.description}</div>
             }
             <div className={style.footer}>
-                <Button style={{backgroundColor: '#E5EFFF', color:'#0066FF'}}><CaretUpOutlined />赞同</Button>
-                <Button style={{backgroundColor: '#E5EFFF', color:'#0066FF'}}><CaretDownOutlined /></Button>
+                <Button style={{backgroundColor: '#E5EFFF', color:''}}><CaretUpOutlined />赞同</Button>
+                <Button style={{backgroundColor: '#E5EFFF'}}><CaretDownOutlined /></Button>
                 <span><CommentOutlined />评论</span>
                 <span><SendOutlined />分享</span>
                 <span><StarOutlined />收藏</span>
