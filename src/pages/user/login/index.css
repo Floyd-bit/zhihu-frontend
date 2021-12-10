@@ -1,7 +1,18 @@
+.login-background {
+  background-image: url(../../../assets/zhihu_login_bg.png);
+  background-color: #87cefa;
+  height: 100%;
+}
+
 .login-container {
-    filter:blur(10px);
--webkit-filter:blur(10px);
--moz-filter:blur(10px);
--ms-filter:blur(10px);
--o-filter:blur(10px);
+  /* filter: blur(10px);
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -ms-filter: blur(10px);
+  -o-filter: blur(10px); */
+  background-color: '#ffffff';
+  position: 'absolute';
+  right: '10%';
+  width: '40%';
+  top: '10%';
 }
