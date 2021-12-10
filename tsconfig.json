@@ -15,4 +15,116 @@
     },
     "allowSyntheticDefaultImports": true
   }
+  // "compilerOptions": {
+  //     //target 用来指定ts被编译为ES的版本
+  //     //'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'esnext'.
+  //     "target": "es2015",
+
+  //     //module 指定要使用的模块化的规范
+  //     //'none', 'commonjs', 'amd', 'system', 'umd', 'es6', 'es2015', 'es2020', 'esnext'
+  //     "module": "es2015",
+
+  //     //lib 用来指定项目所用的库
+  //     // "lib": [],//一般情况下不需要设置（浏览器运行的就不用管，nodejs运行的再根据实际使用去指定）
+  //     // 可选值：'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'esnext', 'dom',
+  //     // 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection',
+  //     // 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include',
+  //     //  'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl',
+  //     // 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2020.bigint', 'es2020.promise',
+  //     // 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl',
+
+  //     //outDir 用来指定编译后文件所在的目录
+  //     "outDir": "./dist",
+
+  //     //outFile 将代码合并为一个文件
+  //     // 设置outFile后，所有的全局作用域中的代码会合并到同一个文件中
+  //     // "outFile": "./dist/app.js",
+
+  //     // 是否对js文件进行编译，默认是false
+  //     "allowJs": true,
+
+  //     // 是否检查js代码是否符合语法规范，默认值是false
+  //     "checkJs": true,
+
+  //     // 是否移除注释
+  //     "removeComments": true,
+
+  //     // 不生成编译后的文件
+  //     "noEmit": false,
+
+  //     // 当有错误时不生成编译文件
+  //     "noEmitOnError": true,
+
+  //     // 所有严格检查的总开关，包括下面四个（如果相同的话可以直接用这个，下面四个省略）
+  //     "strict": true,
+
+  //     // 用来设置编译后的文件是否使用严格模式，默认是false
+  //     "alwaysStrict": true,
+
+  //     // 不允许隐式的any类型
+  //     "noImplicitAny": true,
+
+  //     // 不允许不明确类型的this
+  //     "noImplicitThis": true,
+
+  //     // 严格检查空值
+  // "strictNullChecks": true
+  // "incremental": true, // TS编译器在第一次编译之后会生成一个存储编译信息的文件，第二次编译会在第一次的基础上进行增量编译，可以提高编译的速度
+  // "tsBuildInfoFile": "./buildFile", // 增量编译文件的存储位置
+  // "diagnostics": true, // 打印诊断信息
+  // "target": "ES5", // 目标语言的版本
+  // "module": "CommonJS", // 生成代码的模板标准
+  //                  // 默认值 target === "es3" or "es5" ?"commonjs" : "es6"
+  // "outFile": "./app.js", // 将多个相互依赖的文件生成一个文件，可以用在AMD模块中，
+  //                       // 即开启时应设置"module": "AMD",
+  // "lib": [], // 编译时引入的 ES 功能库，包括：es5 、es6、es7、dom 等。// 如果未设置，则默认为： target 为 es5 时: ["dom", "es5", "scripthost"]
+  // //target 为 es6 时: ["dom", "es6", "dom.iterable", "scripthost"]
+  // "allowJS": true, // 允许编译器编译JS，JSX文件
+  // "checkJs": true, // 允许在JS文件中报错，通常与allowJS一起使用
+  // "outDir": "./dist", // 指定输出目录
+  // "rootDir": "./", // 指定输出文件目录(用于输出)，用于控制输出目录结构
+  // "declaration": true, // 生成声明文件，开启后会自动生成声明文件
+  // "declarationDir": "./file", // 指定生成声明文件存放目录
+  // "emitDeclarationOnly": true, // 只生成声明文件，而不会生成js文件
+  // "sourceMap": true, // 生成目标文件的sourceMap文件
+  // "inlineSourceMap": true, // 生成目标文件的inline SourceMap，//inline SourceMap会包含在生成的js文件中
+  // "declarationMap": true, // 为声明文件生成sourceMap
+  // "typeRoots": [], // 声明文件目录，默认时node_modules/@types
+  // "types": [], // 加载的声明文件包
+  //               //如果指定了某个值， 她会在 typeRoots 下找这个包，找到了就只加载这个包
+  // "removeComments":true, // 删除注释
+  // "noEmit": true, // 不输出文件,即编译后不会生成任何js文件
+  // "noEmitOnError": true, // 发送错误时不输出任何文件
+  // "noEmitHelpers": true, // 不生成helper函数，减小体积，需要额外安装，常配合importHelpers一起使用
+  // "importHelpers": true, // 通过tslib引入helper函数，文件必须是模块
+  // "downlevelIteration": true, // 降级遍历器实现，如果目标源是es3/5，那么遍历器会有降级的实现
+  // "strict": true, // 开启所有严格的类型检查
+  // "alwaysStrict": true, // 在代码中注入'use strict'
+  // "noImplicitAny": true, // 不允许隐式的any类型
+  // "strictNullChecks": true, // 不允许把null、undefined赋值给其他类型的变量
+  // "strictFunctionTypes": true, // 不允许函数参数双向协变
+  // "strictPropertyInitialization": true, // 类的实例属性必须初始化
+  // "strictBindCallApply": true, // 严格的bind/call/apply检查
+  // "noImplicitThis": true, // 不允许this有隐式的any类型
+  // "noUnusedLocals": true, // 检查只声明、未使用的局部变量(只提示不报错)
+  // "noUnusedParameters": true, // 检查未使用的函数参数(只提示不报错)
+  // "noFallthroughCasesInSwitch": true, // 防止switch语句贯穿(即如果没有break语句后面不会执行)
+  // "noImplicitReturns": true, //每个分支都会有返回值
+  // "esModuleInterop": true, // 允许export=导出，由import from 导入
+  // "allowUmdGlobalAccess": true, // 允许在模块中全局变量的方式访问umd模块
+  // "moduleResolution": "node", // 模块解析策略，ts默认用node的解析策略，即相对的方式导入
+  // "baseUrl": "./", // 解析非相对模块的基地址，默认是当前目录
+  // "paths": { // 路径映射，相对于baseUrl
+  //     // 如使用jq时不想使用默认版本，而需要手动指定版本，可进行如下配置
+  //    "jquery": ["node_modules/jquery/dist/jquery.min.js"]
+  //   },
+  // "rootDirs": ["src","out"], // 将多个目录放在一个虚拟目录下，用于运行时，
+  //                           //即编译后引入文件的位置可能发生变化，
+  //                           //这也设置可以虚拟src和out在同一个目录下，不用再去改变路径也不会报错
+  // "listEmittedFiles": true, // 打印输出文件
+  // "listFiles": true , // 打印编译的文件(包括引用的声明文件)
+  // "jsx":"Preserve"   //在 .tsx 中支持 JSX ：React 或 Preserve
+  // "jsxFactory":""   //默认值 React.createElement	。  jsx 设置为 React 时使用的创建函数
+
+  // //}
 }
