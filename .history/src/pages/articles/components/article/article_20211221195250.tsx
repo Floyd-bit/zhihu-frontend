@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-06 23:51:37
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-21 19:55:14
+ * @LastEditTime: 2021-12-21 19:52:50
  */
 
 import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from "@ant-design/icons";
@@ -43,13 +43,7 @@ export default function(props: any) {
     }
     
     const handleStar = () => {
-        if(btnStyle.key === 1) {
-            if(btntwoStyle.key === 2)
-                setBtnTwoStyle(firstCSS);
-            setBtnStyle(secondCSS);
-        } else {
-            setBtnStyle(firstCSS);
-        }
+        setBtnStyle(pre => pre.key===1 ? secondCSS : firstCSS);
         setStarNum((pre: number) => btnStyle.key===1 ? pre+1 : pre-1);
     }
 
@@ -78,7 +72,7 @@ export default function(props: any) {
                     <span>赞同</span>
                     <span style={{display: 'inline-block', marginLeft: '0.3em'}}>{starNum}</span>
                 </Button>
-                <Button style={btntwoStyle.css} onClick={handleOppose}><CaretDownOutlined /></Button>
+                <Button style={{backgroundColor: '#E5EFFF', color:'#0066FF'}}><CaretDownOutlined /></Button>
                 <span><CommentOutlined />评论</span>
                 <span><SendOutlined />分享</span>
                 <span><StarOutlined />收藏</span>

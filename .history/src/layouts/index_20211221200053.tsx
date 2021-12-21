@@ -4,11 +4,11 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 18:40:13
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-21 20:06:53
+ * @LastEditTime: 2021-12-21 20:00:53
  */
 import React from 'react';
 import styles from './index.css';
-import { Layout, Menu, Avatar, Popover, Dropdown, Input } from 'antd';
+import { Layout, Menu, Breadcrumb, Avatar, Popover, Dropdown } from 'antd';
 import { IconFont } from '@/icons';
 import { BarsOutlined, BellOutlined, ContainerOutlined, ExportOutlined, LineChartOutlined, MessageOutlined, RobotOutlined, SettingOutlined } from '@ant-design/icons';
 import Link from 'umi/link';
@@ -17,8 +17,6 @@ import UserList from '@/pages/components/userList';
 import { logout } from '@/request/api/user';
 
 const { Header, Content, Footer } = Layout;
-
-const { Search } = Input;
 
 const noticeList = [
   '知乎小伙伴',
@@ -31,8 +29,6 @@ const noticeList = [
 const change = (title: any) => {
   console.log(title);
 }
-
-const onSearch = (value: string) => console.log(value);
 
 const  menuItem = noticeList.map((i)=>
   <Menu.Item key={i}>
@@ -98,7 +94,7 @@ const BasicLayout: React.FC = props => {
           <Menu.Item key="info-menu" icon={<ContainerOutlined />}>发现</Menu.Item>
           <Menu.Item key="smart-menu" icon={<LineChartOutlined />}>等你来答</Menu.Item>
         </Menu>
-        <Search placeholder="薇娅偷逃税被追缴并处罚款13.41亿元" onSearch={onSearch} enterButton style={{width: 500, position: 'absolute', right: '400px', top: '18px'}}/>
+        <Search placeholder="input search text" onSearch={onSearch} enterButton />
         <Link to="/chat">
         <div className={styles.message}>
           <MessageOutlined style={{fontSize: '1.2rem', color: 'black'}}/>

@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 18:40:13
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-21 20:06:53
+ * @LastEditTime: 2021-12-21 20:05:35
  */
 import React from 'react';
 import styles from './index.css';
@@ -98,7 +98,7 @@ const BasicLayout: React.FC = props => {
           <Menu.Item key="info-menu" icon={<ContainerOutlined />}>发现</Menu.Item>
           <Menu.Item key="smart-menu" icon={<LineChartOutlined />}>等你来答</Menu.Item>
         </Menu>
-        <Search placeholder="薇娅偷逃税被追缴并处罚款13.41亿元" onSearch={onSearch} enterButton style={{width: 500, position: 'absolute', right: '400px', top: '18px'}}/>
+        <Search placeholder="input search text" onSearch={onSearch} enterButton style={{width: 200, position: 'absolute', right: '500px', top: '20px'}}/>
         <Link to="/chat">
         <div className={styles.message}>
           <MessageOutlined style={{fontSize: '1.2rem', color: 'black'}}/>
