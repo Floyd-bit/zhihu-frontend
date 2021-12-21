@@ -4,7 +4,6 @@ import style from './index.css';
 import Article from '../components/article/article';
 import Answer from '../components/answers/index';
 import { getArticleById } from '../../../request/api/article';
-import { getAnswerByPage } from '../../../request/api/answer';
 
 // const mockData = {
 //     title: '如何看待第 30 届全国中学生生物奥林匹克竞赛萧山中学 11 金 1 银 10 人进国家集训队的成绩？',
@@ -16,8 +15,6 @@ const { Meta } = Card;
 
 export default () => {
     const [data, setData] = useState({});
-    const [answer, setAnswer] = useState([]);
-
     useEffect(() => {
         let parmas = window.location.search;
         let id = parmas.split('=');
@@ -25,19 +22,7 @@ export default () => {
             setData(res.result);
         })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
-
-    useEffect(() => {
-        getAnswerByPage({size: 5, page: 1}).then((res) => {
-            console.log(res);
-            setAnswer(res.result.content);
-        })
-    }, []);
-
-    const answerList = answer.map((item) =>
-        <Answer key={item.id} description={item.content} date={item.date} avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5}/>
-    )
-
+    },[])
     return (
         <div className={style.container}>
             <div className={style.topContainer}>
@@ -66,7 +51,7 @@ export default () => {
             </div>
             <div className={style.bottomContainer}>
                 <div className={style.articleList}>
-                   {answerList}
+                    <Answer description="<p>asdasd</p>" avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c"/>
                 </div>
                 <div className={style.rightList}>
                     <div className={style.about}>

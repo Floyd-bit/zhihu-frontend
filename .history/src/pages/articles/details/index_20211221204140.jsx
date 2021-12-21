@@ -28,14 +28,13 @@ export default () => {
     },[]);
 
     useEffect(() => {
-        getAnswerByPage({size: 5, page: 1}).then((res) => {
-            console.log(res);
+        getAnswerByPage(5,1).then((res) => {
             setAnswer(res.result.content);
         })
     }, []);
 
     const answerList = answer.map((item) =>
-        <Answer key={item.id} description={item.content} date={item.date} avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5}/>
+        <Answer description={item.content}  />
     )
 
     return (
@@ -66,7 +65,7 @@ export default () => {
             </div>
             <div className={style.bottomContainer}>
                 <div className={style.articleList}>
-                   {answerList}
+                    <Answer description="<p>asdasd</p>" avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5}/>
                 </div>
                 <div className={style.rightList}>
                     <div className={style.about}>

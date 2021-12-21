@@ -30,12 +30,12 @@ export default () => {
     useEffect(() => {
         getAnswerByPage({size: 5, page: 1}).then((res) => {
             console.log(res);
-            setAnswer(res.result.content);
+            // setAnswer(res.result.content);
         })
     }, []);
 
     const answerList = answer.map((item) =>
-        <Answer key={item.id} description={item.content} date={item.date} avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5}/>
+        <Answer description={item.content} avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5}/>
     )
 
     return (
