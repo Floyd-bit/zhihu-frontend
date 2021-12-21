@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-20 22:47:43
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-21 16:22:06
+ * @LastEditTime: 2021-10-26 21:52:12
  */
 import { get, post } from '../http';
 
@@ -13,7 +13,6 @@ export const login = (params: any) => {
 }
 
 export const logout = () => {
-    localStorage.removeItem('username');
     return get('/logout',null);
 }
 

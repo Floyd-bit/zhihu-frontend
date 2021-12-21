@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-06 23:51:37
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-21 16:57:11
+ * @LastEditTime: 2021-12-21 16:55:50
  */
 
 import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from "@ant-design/icons";
@@ -41,8 +41,7 @@ export default function(props: any) {
     }
     
     const handleStar = () => {
-        setBtnStyle((pre) => pre.key===1 ? secondCSS : firstCSS);
-        console.log(btnStyle.key);
+        setBtnStyle((pre) => pre.key===1 ? firstCSS : secondCSS);
     }
 
     return (

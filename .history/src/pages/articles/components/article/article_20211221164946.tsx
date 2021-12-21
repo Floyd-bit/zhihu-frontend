@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-06 23:51:37
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-21 16:57:11
+ * @LastEditTime: 2021-12-21 16:49:08
  */
 
 import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from "@ant-design/icons";
@@ -23,26 +23,15 @@ const changedStyle: CSSProperties = {
     color: '#FFFFFF'
 }
 
-const firstCSS = {
-    key: 1,
-    css: primaryStyle
-}
-
-const secondCSS = {
-    key: 2,
-    css: changedStyle
-}
-
 export default function(props: any) {
-    const [btnStyle, setBtnStyle] = useState(firstCSS);    
+    const [btnStyle, setBtnStyle] = useState(primaryStyle);    
 
     const isClickable = () => {
        props.isClick && router.push(`articles/detail?id=${props.id}`);
     }
     
     const handleStar = () => {
-        setBtnStyle((pre) => pre.key===1 ? secondCSS : firstCSS);
-        console.log(btnStyle.key);
+        
     }
 
     return (
@@ -56,11 +45,11 @@ export default function(props: any) {
             }
             </div>
             <div className={style.footer} style={{display: props.showBtn ? 'flex' : 'none'}}>
-                <Button style={btnStyle.css} onClick={handleStar}><CaretUpOutlined />
+                <Button style={{backgroundColor: '#E5EFFF', color:'#0066FF'}} onClick={handleStar}><CaretUpOutlined />
                     <span>赞同</span>
                     <span style={{display: 'inline-block', marginLeft: '0.3em'}}>{props.star}</span>
                 </Button>
-                <Button style={{backgroundColor: '#E5EFFF', color:'#0066FF'}}><CaretDownOutlined /></Button>
+                <Button style={btnStyle}><CaretDownOutlined /></Button>
                 <span><CommentOutlined />评论</span>
                 <span><SendOutlined />分享</span>
                 <span><StarOutlined />收藏</span>

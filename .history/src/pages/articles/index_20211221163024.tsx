@@ -50,7 +50,7 @@ export default () => {
     const animalList = articles.map((item:any) => 
         isLoading
         ? <Skeleton active />
-        : <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} star={item.articleStar} isClick={true} showBtn={true}/>
+        : <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} isClick={true} />
     );
 
     const gridClick = useCallback((e:any) => {

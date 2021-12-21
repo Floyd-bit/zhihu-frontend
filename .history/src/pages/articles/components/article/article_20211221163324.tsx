@@ -4,47 +4,19 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-06 23:51:37
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-21 16:57:11
+ * @LastEditTime: 2021-12-21 16:32:41
  */
 
 import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from "@ant-design/icons";
 import { Button, Divider } from "antd";
-import React, { CSSProperties, useState } from "react";
+import React from "react";
 import style from './style.css';
 import router from "umi/router";
 
-const primaryStyle: CSSProperties = {
-    backgroundColor: '#E5EFFF',
-    color: '#0066FF'
-}
-
-const changedStyle: CSSProperties = {
-    backgroundColor: '#0066FF',
-    color: '#FFFFFF'
-}
-
-const firstCSS = {
-    key: 1,
-    css: primaryStyle
-}
-
-const secondCSS = {
-    key: 2,
-    css: changedStyle
-}
-
 export default function(props: any) {
-    const [btnStyle, setBtnStyle] = useState(firstCSS);    
-
     const isClickable = () => {
        props.isClick && router.push(`articles/detail?id=${props.id}`);
     }
-    
-    const handleStar = () => {
-        setBtnStyle((pre) => pre.key===1 ? secondCSS : firstCSS);
-        console.log(btnStyle.key);
-    }
-
     return (
         <div className={style.container}>
             <div className={style.clickable} onClick={isClickable}>
@@ -55,11 +27,8 @@ export default function(props: any) {
                 : <div className={style.description}>{props.description}</div>
             }
             </div>
-            <div className={style.footer} style={{display: props.showBtn ? 'flex' : 'none'}}>
-                <Button style={btnStyle.css} onClick={handleStar}><CaretUpOutlined />
-                    <span>赞同</span>
-                    <span style={{display: 'inline-block', marginLeft: '0.3em'}}>{props.star}</span>
-                </Button>
+            <div className={style.footer} style={{display: props.showBtn ? 'block' : 'none'}}>
+                <Button style={{backgroundColor: '#E5EFFF', color:'#0066FF'}}><CaretUpOutlined />赞同</Button>
                 <Button style={{backgroundColor: '#E5EFFF', color:'#0066FF'}}><CaretDownOutlined /></Button>
                 <span><CommentOutlined />评论</span>
                 <span><SendOutlined />分享</span>

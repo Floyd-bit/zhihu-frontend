@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 18:40:13
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-21 16:21:08
+ * @LastEditTime: 2021-12-10 20:10:38
  */
 import React from 'react';
 import styles from './index.css';
@@ -106,9 +106,7 @@ const BasicLayout: React.FC = props => {
         </Dropdown>
         <div style={{ position: 'absolute', color: 'white', right: '25px', top: '-4px' }}>
           <Popover content={downContent} placement="bottom">
-            <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>
-              {localStorage.getItem('username')?.charAt(0)}
-            </Avatar>
+            <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>F</Avatar>
             <span style={{ display: 'inline-block', marginLeft: '10px' }}>Floyd</span>
           </Popover>
         </div>

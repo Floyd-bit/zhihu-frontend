@@ -27,7 +27,7 @@ export default () => {
             <div className={style.topContainer}>
                 <Card style={{ width: '100%', padding: '0 10%' }} bodyStyle={{ display: 'flex', justifyContent: 'space-around' }}>
                     <div style={{ width: '80%' }}>
-                        <Article title={data.articleTitle} description={data.articleContentHtml} isHtml={true} showBtn={false}/>
+                        <Article title={data.articleTitle} description={data.articleContentHtml} isHtml={true}/>
                         <div>
                             <Button type="primary" style={{ marginRight: '20px' }}>关注帖子</Button>
                             <Button type="primary" ghost style={{ marginRight: '20px' }}>

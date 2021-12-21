@@ -64,6 +64,7 @@ const openNotification = (mes: string) => {
 
 const handleLogin = (params: any) => {
   login(params).then((res: any) => {
+    console.log(res);
     switch(res.code) {
       case 200:
         localStorage.setItem('username', res.result);

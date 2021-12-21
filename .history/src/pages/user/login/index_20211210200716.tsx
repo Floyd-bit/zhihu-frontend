@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 20:18:25
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-21 16:29:14
+ * @LastEditTime: 2021-12-10 20:07:16
  */
 import { LoginForm, ProFormText, ProFormCaptcha, ProFormCheckbox } from '@ant-design/pro-form';
 import {
@@ -64,13 +64,9 @@ const openNotification = (mes: string) => {
 
 const handleLogin = (params: any) => {
   login(params).then((res: any) => {
-    switch(res.code) {
-      case 200:
-        localStorage.setItem('username', res.result);
-        router.push('/articles');
-      case 400:
-        openNotification(res.message);
-    }
+    console.log(res);
+    res.code === 200 && router.push('/articles');
+    res.code === 400 && openNotification(res.message);
   });
 };
 
