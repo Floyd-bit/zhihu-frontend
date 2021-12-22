@@ -49,9 +49,9 @@ export default () => {
                         <div>
                             <Button type="primary" style={{ marginRight: '20px' }}>关注帖子</Button>
                             <Button type="primary" ghost style={{ marginRight: '20px' }}>
-                                写回答
+                                回帖
                             </Button>
-                            <Button type="dashed" danger>邀请回答</Button>
+                            <Button type="dashed" danger>联系TA</Button>
                         </div>
                     </div>
                     <div className={style.viewNumber}>

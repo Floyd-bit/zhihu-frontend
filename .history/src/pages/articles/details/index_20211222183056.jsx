@@ -11,7 +11,7 @@ import { getAnswerByPage } from '../../../request/api/answer';
 //     description: '如何看待第 30 届全国中学生生物奥林匹克竞赛萧山中学 11 金 1 银 10 人进国家集训队的成绩？'
 // };
 
-// const { Meta } = Card;
+const { Meta } = Card;
 
 
 export default () => {
@@ -49,9 +49,9 @@ export default () => {
                         <div>
                             <Button type="primary" style={{ marginRight: '20px' }}>关注帖子</Button>
                             <Button type="primary" ghost style={{ marginRight: '20px' }}>
-                                写回答
+                                回帖
                             </Button>
-                            <Button type="dashed" danger>邀请回答</Button>
+                            <Button type="dashed" danger>联系TA</Button>
                         </div>
                     </div>
                     <div className={style.viewNumber}>
@@ -85,6 +85,7 @@ export default () => {
                                     <div>有事可私信</div>
                                 </div>
                             </div>
+                            <Meta title="Europe Street beat" description="www.instagram.com" />
                         </Card>
                     </div>
                     <div className={style.recommand}>

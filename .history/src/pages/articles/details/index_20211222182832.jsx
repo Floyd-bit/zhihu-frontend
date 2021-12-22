@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Button, Avatar } from 'antd';
+import React,{ useState, useEffect } from 'react';
+import { Card, Button } from 'antd';
 import style from './index.css';
 import Article from '../components/article/article';
 import Answer from '../components/answers/index';
@@ -11,7 +11,7 @@ import { getAnswerByPage } from '../../../request/api/answer';
 //     description: '如何看待第 30 届全国中学生生物奥林匹克竞赛萧山中学 11 金 1 银 10 人进国家集训队的成绩？'
 // };
 
-// const { Meta } = Card;
+const { Meta } = Card;
 
 
 export default () => {
@@ -24,11 +24,11 @@ export default () => {
         getArticleById(id[1]).then((res) => {
             setData(res.result);
         })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
 
     useEffect(() => {
-        getAnswerByPage({ size: 5, page: 1 }).then((res) => {
+        getAnswerByPage({size: 5, page: 1}).then((res) => {
             setAnswer(res.result.content);
         })
     }, []);
@@ -37,7 +37,7 @@ export default () => {
     const filterRes = answer.filter(item => item.aid === data.id);
 
     const answerList = filterRes.map((item) =>
-        <Answer key={item.id} description={item.content} date={item.date} avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5} />
+        <Answer key={item.id} description={item.content} date={item.date} avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5}/>
     )
 
     return (
@@ -45,13 +45,13 @@ export default () => {
             <div className={style.topContainer}>
                 <Card style={{ width: '100%', padding: '0 10%' }} bodyStyle={{ display: 'flex', justifyContent: 'space-around' }}>
                     <div style={{ width: '80%' }}>
-                        <Article title={data.articleTitle} description={data.articleContentHtml} isHtml={true} showBtn={false} />
+                        <Article title={data.articleTitle} description={data.articleContentHtml} isHtml={true} showBtn={false}/>
                         <div>
                             <Button type="primary" style={{ marginRight: '20px' }}>关注帖子</Button>
                             <Button type="primary" ghost style={{ marginRight: '20px' }}>
-                                写回答
+                                回帖
                             </Button>
-                            <Button type="dashed" danger>邀请回答</Button>
+                            <Button type="dashed" danger>联系TA</Button>
                         </div>
                     </div>
                     <div className={style.viewNumber}>
@@ -68,28 +68,21 @@ export default () => {
             </div>
             <div className={style.bottomContainer}>
                 <div className={style.articleList}>
-                    {answerList}
+                   {answerList}
                 </div>
                 <div className={style.rightList}>
                     <div className={style.about}>
                         <Card
                             hoverable
                             bordered={true}
+                            cover={<img alt="example" src= "https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" />}
                         >
-                            <div className={style.avatarContainer}>
-                                <div className={style.avatar}>
-                                    <Avatar shape="square" size="large" src="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" />
-                                </div>
-                                <div className={style.introduction}>
-                                    <div style={{ fontWeight: 'bold' }}>徐睿</div>
-                                    <div>有事可私信</div>
-                                </div>
-                            </div>
+                            <Meta title="Europe Street beat" description="www.instagram.com" />
                         </Card>
                     </div>
                     <div className={style.recommand}>
                         <Card title="相关帖子" bordered={true}>
-
+                            
                         </Card>
                     </div>
                 </div>
