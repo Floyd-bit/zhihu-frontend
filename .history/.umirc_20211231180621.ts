@@ -32,7 +32,7 @@ const config: IConfig =  {
       routes: [
         { path: '/', component: '../pages/articles/index' },
         { path: '/articles', component: '../pages/articles/index'},
-        { path: '/articles/detail', component: '../pages/articles/details/index'},
+        { path: '/articles/detail', component: '../pages/articles/details'},
         { path: '/articles/write', component: '../pages/articles/writeArticle/index'},
         { path: '/chat', component: '../pages/chat/index'}
       ]

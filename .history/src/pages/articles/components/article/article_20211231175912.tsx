@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-06 23:51:37
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-31 21:11:02
+ * @LastEditTime: 2021-12-31 17:58:51
  */
 
 import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from "@ant-design/icons";
@@ -33,18 +33,9 @@ const secondCSS = {
     css: changedStyle
 }
 
-declare interface articleProps {
-    key?: number,
-    id?: number,
-    title: string,
-    description: string,
-    star?: number,
-    isClick?: boolean,
-    showBtn: boolean,
-    isHtml?: boolean
-}
+export declare interface 
 
-export default function(props: articleProps) {
+export default function(props: any) {
     const [btnStyle, setBtnStyle] = useState(firstCSS);
     const [btntwoStyle, setBtnTwoStyle] = useState(firstCSS);    
     const [starNum, setStarNum] = useState(props.star);
@@ -61,7 +52,7 @@ export default function(props: articleProps) {
         } else {
             setBtnStyle(firstCSS);
         }
-        setStarNum((pre: number|undefined) => pre && (btnStyle.key===1 ? pre+1 : pre-1));
+        setStarNum((pre: number) => btnStyle.key===1 ? pre+1 : pre-1);
     }
 
     const handleOppose = () => {

@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-21 20:14:07
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-31 20:18:32
+ * @LastEditTime: 2021-12-31 18:08:12
  */
 import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from "@ant-design/icons";
 import { Button, Avatar, Card } from "antd";
@@ -31,7 +31,7 @@ const secondCSS = {
     css: changedStyle
 }
 
-export declare interface AnswerInterface {
+declare interface AnswerInterface {
     key: number,
     description: string,
     date: string,

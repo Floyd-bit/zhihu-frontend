@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-27 17:39:37
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-31 17:55:33
+ * @LastEditTime: 2021-12-31 17:53:59
  */
 import React, { useCallback, useRef, useState } from "react";
 import { Editor } from '@tinymce/tinymce-react';
@@ -104,5 +104,3 @@ const WriteArticleComponent: React.FC<{}> = () => {
 
     )
 }
-
-export default WriteArticleComponent;

@@ -9,6 +9,7 @@ import Link from 'umi/link';
 import router from 'umi/router';
 import React,{ useCallback, useEffect, useState } from 'react';
 import { getArticleByPage } from '../../request/api/article';
+import { ExtendsProps } from '@ant-design/pro-form/lib/interface';
 
 
 const { TabPane } = Tabs;
@@ -32,7 +33,7 @@ const itemToPath = (item:any) => {
 }
 
 
-const ArticleComponent: React.FC<{}> = () => {
+const ArticleComponent: React.FC<ExtendsProps> = () => {
     const [articles,setArticles] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);

@@ -61,7 +61,7 @@ export default function(props: articleProps) {
         } else {
             setBtnStyle(firstCSS);
         }
-        setStarNum((pre: number|undefined) => pre && (btnStyle.key===1 ? pre+1 : pre-1));
+        setStarNum((pre: number|undefined) => btnStyle.key===1 ? pre+1 : pre-1);
     }
 
     const handleOppose = () => {

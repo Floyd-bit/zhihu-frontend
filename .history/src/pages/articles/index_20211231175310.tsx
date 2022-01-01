@@ -32,7 +32,7 @@ const itemToPath = (item:any) => {
 }
 
 
-const ArticleComponent: React.FC<{}> = () => {
+const ArticleComponent: React.FC<> = () => {
     const [articles,setArticles] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
