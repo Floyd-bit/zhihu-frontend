@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 18:40:13
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-21 20:06:53
+ * @LastEditTime: 2022-01-01 16:03:24
  */
 import React from 'react';
 import styles from './index.css';
@@ -48,7 +48,7 @@ const menu = (
 
 const downContent = (
   <>
-    <Link to="/">
+    <Link to="/articles">
       <p>
       <SettingOutlined />
         个人设置
@@ -68,15 +68,6 @@ const handleClick = (e: { key: any; }) => {
     case 'frontpage-menu': 
       router.push('/articles');
       break;
-    // case 'animals-menu':
-    //   router.push('/animals');
-    //   break;
-    // case 'info-menu':
-    //   router.push('/articles');
-    //   break;
-    // case 'smart-menu': 
-    //   router.push('/visibility');
-    //   break;
   }
 }
 

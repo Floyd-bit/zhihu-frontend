@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-08 20:54:40
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-10-08 21:51:59
+ * @LastEditTime: 2022-01-01 16:02:50
  */
 import React from 'react';
 import style from './videoGrid.css';
@@ -16,7 +16,7 @@ export default () => {
     return (
         <div className={style.container}>
             <div className={style.cover}>
-                <Link to='/'><Image preview={false} src="https://pic1.zhimg.com/80/v2-1ff047be5330509bb33c34b2f374e7fe_400x224.jpg?source=1940ef5c"></Image></Link>
+                <Link to='/articles'><Image preview={false} src="https://pic1.zhimg.com/80/v2-1ff047be5330509bb33c34b2f374e7fe_400x224.jpg?source=1940ef5c"></Image></Link>
                 <div className={style.hoverText}>
                     <PlayCircleOutlined />
                     <span style={{display: 'inline-block', marginLeft: '3px'}}>31.5万播放</span>

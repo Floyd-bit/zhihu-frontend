@@ -39,20 +39,20 @@
 }
 
 .articleList {
-    flex: 2;
+    width: 60%;
     background: cornsilk;
 }
 
 .rightList {
-    flex: 1;
+    width: 30%;
 }
 
 .about {
-    padding: 0 10%;
+    padding: 0;
 }
 
 .recommand {
-    padding: 0 10%;
+    padding: 0;
     margin-top: 20px;
 }
 

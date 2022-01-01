@@ -1,14 +1,18 @@
-import { Card, Tabs, List, Row, Col, Pagination, Skeleton } from 'antd';
+import { Card, Tabs, List, Row, Col, Pagination, Skeleton, message, Button } from 'antd';
 import { EyeOutlined, VideoCameraOutlined, FireOutlined, LikeOutlined, UserOutlined } from '@ant-design/icons';
 import style from './index.css';
 import Animal from './components/article/article';
 import HotArticle from './components/hotArticle/hotArticle';
 import VideoGrid from './components/videoGrid/videoGrid';
 
-import Link from 'umi/link';
 import router from 'umi/router';
 import React,{ useCallback, useEffect, useState } from 'react';
 import { getArticleByPage } from '../../request/api/article';
+import answerPic from '../../assets/answer.png';
+import videoPic from '../../assets/video.png';
+import articlePic from '../../assets/article.png';
+import ideaPic from '../../assets/idea.png';
+import livePic from '../../assets/liveIcon.png';
 
 
 const { TabPane } = Tabs;
@@ -54,13 +58,14 @@ const ArticleComponent: React.FC<{}> = () => {
     );
 
     const gridClick = useCallback((e:any) => {
+        console.log(e.target);
         e.persist();
         switch(e.target.innerText){
             case '写文章':
                 router.push('/articles/write');
                 break;
             default:
-                router.push('/');
+                message.info('待开发');
         }
     },[]);
 
@@ -76,7 +81,7 @@ const ArticleComponent: React.FC<{}> = () => {
 
     return (
         <><div className={style.sitecardborderlesswrapper}>
-            <Card bordered={true} style={{ width: '60%' }}>
+            <Card bordered={true} style={{ width: '68%' }}>
                 <Tabs defaultActiveKey="help">
                     <TabPane
                         tab={<span>
@@ -134,27 +139,38 @@ const ArticleComponent: React.FC<{}> = () => {
                             <span style={{ color: 'grey' }}>草稿箱</span>
                             <span>(0)</span></div>
                     </div>
-                    <Card onClick={gridClick}>
-                        <Card.Grid style={{ width: '25%', textAlign: 'center', cursor: 'pointer' }}>
-                            回答
+                    <Card>
+                        <Card.Grid className={style.gridItem}>
+                            <img src={answerPic}></img>
+                            <div className={style.text} onClick={gridClick}>回答问题</div>
                         </Card.Grid>
-                        <Card.Grid style={{ width: '25%', textAlign: 'center', cursor: 'pointer' }}>
-                            发视频
+                        <Card.Grid className={style.gridItem}>
+                        <img src={videoPic}></img>
+                            <div className={style.text} onClick={gridClick}>发视频</div>
                         </Card.Grid>
-                        <Card.Grid style={{ width: '25%', textAlign: 'center', cursor: 'pointer' }}>
-                            写文章
+                        <Card.Grid className={style.gridItem}>
+                        <img src={articlePic}></img>
+                            <div className={style.text} onClick={gridClick}>写文章</div>
                         </Card.Grid>
-                        <Card.Grid style={{ width: '25%', textAlign: 'center', cursor: 'pointer' }}>
-                            写想法
+                        <Card.Grid className={style.gridItem}>
+                        <img src={ideaPic}></img>
+                            <div className={style.text} onClick={gridClick}>写想法</div>
                         </Card.Grid>
+                        <Button type="primary" style={{width: '100%', marginTop: '10px'}} ghost>进入创作中心</Button>
                     </Card>
                 </Card>
-                <Card bordered={true} style={{ marginTop: '20px' }}>
+                <Card bordered={true} style={{ marginTop: '10px', padding: '1em'}} onClick={gridClick}>
+                    <img src={livePic} style={{width: '100%'}}></img>
+                </Card>
+                <div style={{ marginTop: '10px'}}>
+                    <img src="https://pic4.zhimg.com/70/v2-0b6fa95cf24cde2384fcc51a1a1b88bb.jpg" style={{width: '100%'}}></img>
+                </div>
+                <Card bordered={true} style={{ marginTop: '10px', padding: 0 }}>
                     <List
                         size="small"
                         bordered={false}
                         dataSource={data}
-                        renderItem={(item, index) => <Link to={itemToPath(index)}><List.Item className={style.linkItem}>{item}</List.Item></Link>} />
+                        renderItem={ item => <List.Item className={style.linkItem} onClick={() => message.info('待开发')}>{item}</List.Item>} />
                 </Card>
             </div>
         </div>
