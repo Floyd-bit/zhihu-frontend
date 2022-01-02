@@ -4,16 +4,19 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-10 00:49:54
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-31 21:23:42
+ * @LastEditTime: 2022-01-02 16:06:19
  */
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Avatar } from 'antd';
+import { Card, Button } from 'antd';
 import style from './index.css';
 import Article from '../components/article/article';
-import Answer from '../components/answers/index';
+import Answer, { primaryUser } from '../components/answers/index';
+import UserInfo from '../components/userInfo/index';
 import { getArticleById } from '../../../request/api/article';
 import { getAnswerByPage } from '../../../request/api/answer';
 import { addArticleParam } from '@/request/api/api';
+import { UserInfoRes } from '../components/userInfo/index';
+import { getUserInfo } from '@/request/api/user';
 
 interface AnswerRes {
     id: number,
@@ -40,10 +43,12 @@ const primaryAnswer = {
 const AticleDetail: React.FC<{}> = () => {
     const [data, setData] = useState<addArticleParam>(primaryAnswer);
     const [answer, setAnswer] = useState<Array<AnswerRes>>([]);
+    const [user, setUser] = useState<UserInfoRes>(primaryUser);
 
+    const parmas = window.location.search;
+    const id = parmas.split('=')[1];
+    
     useEffect(() => {
-        let parmas = window.location.search;
-        let id = parmas.split('=')[1];
         getArticleById(parseInt(id)).then((res: any) => {
             setData(res.result);
         })
@@ -56,11 +61,16 @@ const AticleDetail: React.FC<{}> = () => {
         })
     }, []);
 
+    useEffect(() => {
+        filterRes.length && getUserInfo(filterRes[0]?.user ?? 1).then((res: any) => {
+            setUser(res.data);
+        })
+    }, [answer]);
 
     const filterRes = answer.filter((item: AnswerRes) => item.aid === data?.id);
 
     const answerList = filterRes.map((item: AnswerRes) =>
-        <Answer key={item.id} description={item.content} date={item.date} avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5} />
+        <Answer key={item.id} description={item.content} date={item.date} avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5} user={item.user}/>
     )
 
     return (
@@ -99,20 +109,12 @@ const AticleDetail: React.FC<{}> = () => {
                             hoverable
                             bordered={true}
                         >
-                            <div className={style.avatarContainer}>
-                                <div className={style.avatar}>
-                                    <Avatar shape="square" size="large" src="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" />
-                                </div>
-                                <div className={style.introduction}>
-                                    <div style={{ fontWeight: 'bold' }}>徐睿</div>
-                                    <div>有事可私信</div>
-                                </div>
-                            </div>
+                            <UserInfo username={user.username} description={user.description} avatar={user.avatar} answer={user.answer} article={user.article} subscriber={user.subscriber}/>
                         </Card>
                     </div>
                     <div className={style.recommand}>
                         <Card title="相关帖子" bordered={true}>
-
+                            
                         </Card>
                     </div>
                 </div>

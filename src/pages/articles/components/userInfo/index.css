@@ -1,0 +1,30 @@
+.avatarContainer {
+    display: flex;
+}
+
+.avatar {
+    margin-right: 1em;
+}
+
+.dataShow {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2em 1em;
+}
+
+.dataTitle {
+    font-size: 1rem;
+    color: #8590a6;
+}
+
+.dataNumber {
+    font-size: 1.3rem;
+    color: #121212;
+    font-weight: 600;
+}
+
+.btnArea {
+    display: flex;
+    justify-content: space-around;
+}

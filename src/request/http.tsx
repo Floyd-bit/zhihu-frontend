@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-14 23:14:39
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-10-24 23:09:24
+ * @LastEditTime: 2022-01-02 15:26:54
  */
 import axios from 'axios';
 // import QS from 'qs'; 序列化Post类型的参数
@@ -14,18 +14,18 @@ import { FrownTwoTone } from '@ant-design/icons';
 import React from 'react';
 
 // 环境的切换
-if (process.env.NODE_ENV === 'development') {    
-    axios.defaults.withCredentials = true;
-    axios.defaults.baseURL = '/api';
-} 
-else if (process.env.NODE_ENV === 'debug') { 
-    axios.defaults.withCredentials = true;   
-    axios.defaults.baseURL = '/api';
-} 
-else if (process.env.NODE_ENV === 'production') {    
-    axios.defaults.withCredentials = true;
-    axios.defaults.baseURL = '/api';
-}
+// if (process.env.NODE_ENV === 'development') {    
+//     axios.defaults.withCredentials = true;
+//     axios.defaults.baseURL = '/api';
+// } 
+// else if (process.env.NODE_ENV === 'debug') { 
+//     axios.defaults.withCredentials = true;   
+//     axios.defaults.baseURL = '/api';
+// } 
+// else if (process.env.NODE_ENV === 'production') {    
+//     axios.defaults.withCredentials = true;
+//     axios.defaults.baseURL = '/api';
+// }
 
 // 设置超时时间
 axios.defaults.timeout = 10000;

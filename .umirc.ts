@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 18:40:12
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-31 18:06:10
+ * @LastEditTime: 2022-01-02 15:40:57
  */
 import { IConfig } from 'umi-types';
 
@@ -21,6 +21,11 @@ const config: IConfig =  {
       "target": "http://47.119.125.69:8443",
       "changeOrigin": true,
       "pathRewrite": {"^/api": "/api"}
+    },
+    "/mock": {
+      "target": "https://www.fastmock.site/mock/f23fc9c6da1012951095f00c89ccb6a8",
+      "changeOrigin": true,
+      "pathRewrite": {"^/mock": "/api"}
     }
   },
   routes: [
