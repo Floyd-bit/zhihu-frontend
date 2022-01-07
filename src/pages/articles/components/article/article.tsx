@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-06 23:51:37
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-31 21:11:02
+ * @LastEditTime: 2022-01-07 16:56:59
  */
 
 import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from "@ant-design/icons";
@@ -90,11 +90,11 @@ export default function(props: articleProps) {
                     <span style={{display: 'inline-block', marginLeft: '0.3em'}}>{starNum}</span>
                 </Button>
                 <Button style={btntwoStyle.css} onClick={handleOppose}><CaretDownOutlined /></Button>
-                <span><CommentOutlined />评论</span>
-                <span><SendOutlined />分享</span>
-                <span><StarOutlined />收藏</span>
-                <span><HeartOutlined />喜欢</span>
-                <span>...</span>
+                <span className={style.mobile}><CommentOutlined />评论</span>
+                <span className={style.mobile}><SendOutlined />分享</span>
+                <span className={style.mobile}><StarOutlined />收藏</span>
+                <span className={style.mobile}><HeartOutlined />喜欢</span>
+                <span className={style.mobile}>...</span>
             </div>
             <Divider />
         </div>

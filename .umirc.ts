@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 18:40:12
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-01-02 15:40:57
+ * @LastEditTime: 2022-01-07 15:24:51
  */
 import { IConfig } from 'umi-types';
 
@@ -52,7 +52,6 @@ const config: IConfig =  {
       dynamicImport: true,
       title: '知乎',
       dll: false,
-      
       routes: {
         exclude: [
           /components\//,

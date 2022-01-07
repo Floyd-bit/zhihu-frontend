@@ -55,3 +55,19 @@
     padding: 0;
     margin-top: 20px;
 }
+
+@media(max-width: 1200px) {
+    .rightList, .viewNumber {
+        display: none;
+    }
+
+    .mobile {
+        padding: 0 !important;
+        margin: 0 !important;
+        margin-top: 1em !important;
+    }
+
+    .articleList {
+        width: 100%;
+    }
+}

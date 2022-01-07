@@ -28,3 +28,9 @@
 .description img {
     width: auto;
 }
+
+@media(max-width: 1200px) {
+    .mobile {
+        display: none;
+    }
+}

@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 20:18:25
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-21 16:29:14
+ * @LastEditTime: 2022-01-07 17:58:44
  */
 import { LoginForm, ProFormText, ProFormCaptcha, ProFormCheckbox } from '@ant-design/pro-form';
 import {
@@ -22,6 +22,7 @@ import logo from '../../../assets/zhihu_logo.png';
 import React, { CSSProperties, useCallback, useState } from 'react';
 import router from 'umi/router';
 import { login } from '@/request/api/user';
+import style from './index.css';
 
 type LoginType = 'phone' | 'account';
 
@@ -33,27 +34,12 @@ const iconStyles: CSSProperties = {
   cursor: 'pointer',
 };
 
-const bgStyles: CSSProperties = {
-  backgroundImage: `url(${bg})`,
-  backgroundSize: '100%',
-  backgroundColor: '#b8e5f8',
-  height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-};
-
 const logoStyles: CSSProperties = {
   marginTop: '4%',
   height: '12%',
   width: '11%',
 };
 
-const containerStyles: CSSProperties = {
-  backgroundColor: '#ffffff',
-  width: '31%',
-  marginTop: '2%',
-};
 
 const openNotification = (mes: string) => {
   notification.open({
@@ -77,9 +63,9 @@ const handleLogin = (params: any) => {
 export default () => {
   const [loginType, setLoginType] = useState<LoginType>('account');
   return (
-    <div style={bgStyles}>
+    <div className={style.loginBackground} style={{backgroundImage: `url(${bg})`}}>
       <img style={logoStyles} src={logo}></img>
-      <div className="login-container" style={containerStyles}>
+      <div className={style.loginContainer}>
         <LoginForm
           onFinish={handleLogin}
           actions={

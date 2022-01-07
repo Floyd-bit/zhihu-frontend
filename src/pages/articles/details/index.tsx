@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-10 00:49:54
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-01-02 16:06:19
+ * @LastEditTime: 2022-01-07 18:05:18
  */
 import React, { useState, useEffect } from 'react';
 import { Card, Button } from 'antd';
@@ -76,7 +76,7 @@ const AticleDetail: React.FC<{}> = () => {
     return (
         <div className={style.container}>
             <div className={style.topContainer}>
-                <Card style={{ width: '100%', padding: '0 10%' }} bodyStyle={{ display: 'flex', justifyContent: 'space-around' }}>
+                <Card className={style.mobile} style={{ width: '100%', padding: '0 10%' }} bodyStyle={{ display: 'flex', justifyContent: 'space-around' }}>
                     <div style={{ width: '80%' }}>
                         <Article title={data.articleTitle} description={data.articleContentHtml} isHtml={true} showBtn={false} />
                         <div>

@@ -28,3 +28,18 @@
 .description img {
     width: 550px;
 }
+
+@media(max-width: 1200px) {
+    .mobile {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .description img {
+        width: 200px;
+    }
+}

@@ -6,7 +6,7 @@ import HotArticle from './components/hotArticle/hotArticle';
 import VideoGrid from './components/videoGrid/videoGrid';
 
 import router from 'umi/router';
-import React,{ useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { getArticleByPage } from '../../request/api/article';
 import answerPic from '../../assets/answer.png';
 import videoPic from '../../assets/video.png';
@@ -31,43 +31,43 @@ const data = [
     '联系我们',
 ];
 
-const itemToPath = (item:any) => {
+const itemToPath = (item: any) => {
     return item.toString();
 }
 
 
 const ArticleComponent: React.FC<{}> = () => {
-    const [articles,setArticles] = useState([]);
+    const [articles, setArticles] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
-        getArticleByPage({page: currentPage, size: pageSize}).then((res:any) => {
+        getArticleByPage({ page: currentPage, size: pageSize }).then((res: any) => {
             setArticles(res.result.content);
-            setTimeout(()=>{setIsLoading(false)},1000);
-            
+            setTimeout(() => { setIsLoading(false) }, 1000);
+
         })
     }, [currentPage, pageSize]);
 
-    const animalList = articles.map((item:any) => 
+    const animalList = articles.map((item: any) =>
         isLoading
-        ? <Skeleton active />
-        : <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} star={item.articleStar} isClick={true} showBtn={true}/>
+            ? <Skeleton active />
+            : <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} star={item.articleStar} isClick={true} showBtn={true} />
     );
 
-    const gridClick = useCallback((e:any) => {
+    const gridClick = useCallback((e: any) => {
         console.log(e.target);
         e.persist();
-        switch(e.target.innerText){
+        switch (e.target.innerText) {
             case '写文章':
                 router.push('/articles/write');
                 break;
             default:
                 message.info('待开发');
         }
-    },[]);
+    }, []);
 
     const pageChange = (page: number) => {
         console.log(page);
@@ -81,8 +81,8 @@ const ArticleComponent: React.FC<{}> = () => {
 
     return (
         <><div className={style.sitecardborderlesswrapper}>
-            <Card bordered={true} style={{ width: '68%' }}>
-                <Tabs defaultActiveKey="help">
+            <Card className={style.contentCard} bordered={true}>
+                <Tabs className={style.contentTab} defaultActiveKey="help">
                     <TabPane
                         tab={<span>
                             <EyeOutlined />
@@ -91,7 +91,7 @@ const ArticleComponent: React.FC<{}> = () => {
                         key="help"
                     >
                         {animalList}
-                        <div style={{margin: '0 auto'}}>
+                        <div style={{ margin: '0 auto' }}>
                             <Pagination showSizeChanger onShowSizeChange={onShowSizeChange} current={currentPage} total={100} onChange={pageChange} />
                         </div>
                     </TabPane>
@@ -139,42 +139,42 @@ const ArticleComponent: React.FC<{}> = () => {
                             <span style={{ color: 'grey' }}>草稿箱</span>
                             <span>(0)</span></div>
                     </div>
-                    <Card>
-                        <Card.Grid className={style.gridItem}>
-                            <img src={answerPic}></img>
+                    <div className={style.grid}>
+                        <div className={style.gridItem}>
+                            <img src={answerPic} style={{ height: '3em', width: '3.5em' }}></img>
                             <div className={style.text} onClick={gridClick}>回答问题</div>
-                        </Card.Grid>
-                        <Card.Grid className={style.gridItem}>
-                        <img src={videoPic}></img>
+                        </div>
+                        <div className={style.gridItem}>
+                            <img src={videoPic} style={{ height: '3em', width: '3.5em' }}></img>
                             <div className={style.text} onClick={gridClick}>发视频</div>
-                        </Card.Grid>
-                        <Card.Grid className={style.gridItem}>
-                        <img src={articlePic}></img>
+                        </div>
+                        <div className={style.gridItem}>
+                            <img src={articlePic} style={{ height: '3em', width: '3.5em' }}></img>
                             <div className={style.text} onClick={gridClick}>写文章</div>
-                        </Card.Grid>
-                        <Card.Grid className={style.gridItem}>
-                        <img src={ideaPic}></img>
+                        </div>
+                        <div className={style.gridItem}>
+                            <img src={ideaPic} style={{ height: '3em', width: '3.5em' }}></img>
                             <div className={style.text} onClick={gridClick}>写想法</div>
-                        </Card.Grid>
-                        <Button type="primary" style={{width: '100%', marginTop: '10px'}} ghost>进入创作中心</Button>
-                    </Card>
+                        </div>
+                    </div>
+                    <Button type="primary" style={{ width: '100%', marginTop: '10px' }} ghost>进入创作中心</Button>
                 </Card>
-                <Card bordered={true} style={{ marginTop: '10px', padding: '1em'}} onClick={gridClick}>
-                    <img src={livePic} style={{width: '100%'}}></img>
+                <Card bordered={true} style={{ marginTop: '10px', padding: '1em' }} onClick={gridClick}>
+                    <img src={livePic} style={{ width: '100%' }}></img>
                 </Card>
-                <div style={{ marginTop: '10px'}}>
-                    <img src="https://pic4.zhimg.com/70/v2-0b6fa95cf24cde2384fcc51a1a1b88bb.jpg" style={{width: '100%'}}></img>
+                <div style={{ marginTop: '10px' }}>
+                    <img src="https://pic4.zhimg.com/70/v2-0b6fa95cf24cde2384fcc51a1a1b88bb.jpg" style={{ width: '100%' }}></img>
                 </div>
                 <Card bordered={true} style={{ marginTop: '10px', padding: 0 }}>
                     <List
                         size="small"
                         bordered={false}
                         dataSource={data}
-                        renderItem={ item => <List.Item className={style.linkItem} onClick={() => message.info('待开发')}>{item}</List.Item>} />
+                        renderItem={item => <List.Item className={style.linkItem} onClick={() => message.info('待开发')}>{item}</List.Item>} />
                 </Card>
             </div>
         </div>
-    </>
+        </>
     )
 }
 

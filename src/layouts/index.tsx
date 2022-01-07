@@ -4,12 +4,11 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 18:40:13
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-01-01 16:03:24
+ * @LastEditTime: 2022-01-07 16:59:37
  */
 import React from 'react';
 import styles from './index.css';
 import { Layout, Menu, Avatar, Popover, Dropdown, Input } from 'antd';
-import { IconFont } from '@/icons';
 import { BarsOutlined, BellOutlined, ContainerOutlined, ExportOutlined, LineChartOutlined, MessageOutlined, RobotOutlined, SettingOutlined } from '@ant-design/icons';
 import Link from 'umi/link';
 import router from 'umi/router';
@@ -48,6 +47,18 @@ const menu = (
 
 const downContent = (
   <>
+    <Link to="/articles" className={styles.mobile}>
+      <p>
+       <MessageOutlined />
+        站内聊天
+      </p>
+    </Link>
+    <Link to="/articles" className={styles.mobile}>
+      <p>
+       <BellOutlined />
+        消息提醒
+      </p>
+    </Link>
     <Link to="/articles">
       <p>
       <SettingOutlined />
@@ -83,13 +94,13 @@ const BasicLayout: React.FC = props => {
         <div style={{ float: 'left', color: '#0066FF', fontSize: '1.8rem', marginRight: '50px' }}>
           知乎
         </div>
-        <Menu theme="light" mode="horizontal" defaultSelectedKeys={['frontpage-menu']} onClick={handleClick}>
+        <Menu className={styles.hidden} theme="light" mode="horizontal" defaultSelectedKeys={['frontpage-menu']} onClick={handleClick}>
           <Menu.Item key="frontpage-menu" icon={<BarsOutlined />}>首页</Menu.Item>
           <Menu.Item key="animals-menu" icon={<RobotOutlined />}>会员</Menu.Item>
           <Menu.Item key="info-menu" icon={<ContainerOutlined />}>发现</Menu.Item>
           <Menu.Item key="smart-menu" icon={<LineChartOutlined />}>等你来答</Menu.Item>
         </Menu>
-        <Search placeholder="薇娅偷逃税被追缴并处罚款13.41亿元" onSearch={onSearch} enterButton style={{width: 500, position: 'absolute', right: '400px', top: '18px'}}/>
+        <Search className={styles.searchBox} placeholder="薇娅偷逃税被追缴并处罚款13.41亿元" onSearch={onSearch} enterButton/>
         <Link to="/chat">
         <div className={styles.message}>
           <MessageOutlined style={{fontSize: '1.2rem', color: 'black'}}/>

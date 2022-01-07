@@ -25,6 +25,10 @@
       cursor: pointer;
   }
 
+  .contentCard {
+      width: 68%;
+  }
+
   .text {
       width: 100%;
       font-size: 12px;
@@ -38,9 +42,35 @@
       color: blue;
   }
 
+  .grid {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+  }
   .gridItem {
       width: 25%; 
       text-align: center;
       cursor: pointer;
-      padding: 12px;
+      /* padding: 12px; */
+  }
+
+
+  @media(max-width: 1200px) {
+    .sitecardborderlesswrapper {
+        padding: 0;
+      }
+
+    .rightColumn {
+        display: none;
+    }
+
+    .contentCard {
+        width: 100%;
+        margin-top: 1em;
+    }
+
+    .contentTab {
+        width: 100%;
+    }
   }

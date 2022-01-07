@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-21 20:14:07
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-01-02 15:51:35
+ * @LastEditTime: 2022-01-07 18:12:08
  */
 import { getUserInfo } from "@/request/api/user";
 import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from "@ant-design/icons";
@@ -86,7 +86,7 @@ export default function (props: AnswerInterface) {
 
     return (
         <>
-            <Card>
+            <Card className={style.mobile}>
                 <div className={style.container}>
                     <div className={style.avatarContainer}>
                         <div className={style.avatar}>
@@ -109,11 +109,11 @@ export default function (props: AnswerInterface) {
                             <span style={{ display: 'inline-block', marginLeft: '0.3em' }}>{starNum}</span>
                         </Button>
                         <Button style={btntwoStyle.css} onClick={handleOppose}><CaretDownOutlined /></Button>
-                        <span><CommentOutlined />评论</span>
-                        <span><SendOutlined />分享</span>
-                        <span><StarOutlined />收藏</span>
-                        <span><HeartOutlined />喜欢</span>
-                        <span>...</span>
+                        <span className={style.hidden}><CommentOutlined />评论</span>
+                        <span className={style.hidden}><SendOutlined />分享</span>
+                        <span className={style.hidden}><StarOutlined />收藏</span>
+                        <span className={style.hidden}><HeartOutlined />喜欢</span>
+                        <span className={style.hidden}>...</span>
                     </div>
                 </div>
             </Card>

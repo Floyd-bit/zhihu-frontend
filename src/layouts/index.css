@@ -18,6 +18,27 @@
   border-bottom: #1890FF 2px solid;
 }
 
+.searchBox {
+  width: 30%;
+  position: absolute;
+  right: 25%;
+  top: 1.2em;
+}
+
+.mobile {
+  display: none;
+}
+
+@media(max-width: 1200px){
+  .hidden, .message, .notice, .searchBox {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+}
+
 .message {
   position: absolute;
   top: 0px;
