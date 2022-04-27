@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 18:40:12
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-04-27 21:15:25
+ * @LastEditTime: 2022-04-27 23:00:28
  */
 import { IConfig } from 'umi-types';
 
@@ -39,7 +39,8 @@ const config: IConfig =  {
         { path: '/articles', component: '../pages/articles/index'},
         { path: '/articles/detail', component: '../pages/articles/details/index'},
         { path: '/articles/write', component: '../pages/articles/writeArticle/index'},
-        { path: '/chat', component: '../pages/chat/index'}
+        { path: '/chat', component: '../pages/chat/index'},
+        { path: '/explore', component: '../pages/explore/index' }
       ]
     }
   ],

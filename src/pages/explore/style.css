@@ -1,0 +1,38 @@
+.container {
+    width: 100%;
+    padding: 10px 107px;
+}
+.title {
+    height: 36px;
+    margin-left: 35px;
+    font-size: 25px;
+    font-weight: 600;
+    font-synthesis: style;
+}
+
+.problemGround {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.specials {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.specialCard {
+    width: 47%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: #fff;
+    height: 450px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(18,18,18,.1);
+    box-shadow: 0 1px 3px 0 rgba(18,18,18,.1);
+}
