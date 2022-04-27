@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 18:40:12
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-01-07 15:24:51
+ * @LastEditTime: 2022-04-27 21:15:25
  */
 import { IConfig } from 'umi-types';
 
@@ -18,7 +18,7 @@ const config: IConfig =  {
   // 代理到其他服务器
   proxy: {
     "/api": {
-      "target": "http://47.119.125.69:8443",
+      "target": "http://121.37.213.242:8443",
       "changeOrigin": true,
       "pathRewrite": {"^/api": "/api"}
     },

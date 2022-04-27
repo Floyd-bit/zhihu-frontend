@@ -1,0 +1,42 @@
+.container {
+    background: rgba(133, 144, 166, 0.05);
+    border-radius: 4px;
+    width: 100%;
+    height: 98px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 12px;
+    line-height: 22px;
+    color: #8590a6;
+}
+
+.number {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 600;
+    font-synthesis: style;
+}
+
+.history {
+    font-size: 12px;
+}
+
+.historyTitle {
+    color: rgb(99, 133, 166);
+}
+
+.historyNumber {
+    font-weight: 600;
+}

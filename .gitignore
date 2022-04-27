@@ -10,11 +10,11 @@
 # production
 /dist
 
+/.history
+
 # misc
 .DS_Store
 
 # umi
 .umi
 .umi-production
-
-/.history

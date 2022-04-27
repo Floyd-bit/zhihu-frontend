@@ -4,6 +4,7 @@ import style from './index.css';
 import Animal from './components/article/article';
 import HotArticle from './components/hotArticle/hotArticle';
 import VideoGrid from './components/videoGrid/videoGrid';
+import CreateDataShow from './components/createCenter/createDataShow';
 
 import router from 'umi/router';
 import React, { useCallback, useEffect, useState } from 'react';
@@ -51,9 +52,9 @@ const ArticleComponent: React.FC<{}> = () => {
         })
     }, [currentPage, pageSize]);
 
-    const animalList = articles.map((item: any) =>
+    const animalList = articles.map((item: any, index: number) =>
         isLoading
-            ? <Skeleton active />
+            ? <Skeleton key={index} active />
             : <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} star={item.articleStar} isClick={true} showBtn={true} />
     );
 
@@ -157,6 +158,7 @@ const ArticleComponent: React.FC<{}> = () => {
                             <div className={style.text} onClick={gridClick}>写想法</div>
                         </div>
                     </div>
+                    <CreateDataShow/>
                     <Button type="primary" style={{ width: '100%', marginTop: '10px' }} ghost>进入创作中心</Button>
                 </Card>
                 <Card bordered={true} style={{ marginTop: '10px', padding: '1em' }} onClick={gridClick}>
