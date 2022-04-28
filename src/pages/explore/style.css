@@ -15,7 +15,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 24px;
+    padding: 24px 0 20px;
 }
 
 .specials {
@@ -35,4 +35,29 @@
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 3px 0 rgba(18,18,18,.1);
     box-shadow: 0 1px 3px 0 rgba(18,18,18,.1);
+}
+
+.contentSection {
+    padding: 24px 0 20px;
+}
+
+.columns {
+    display: flex;
+    justify-content: space-around;  
+}
+
+.more {
+    display: flex;
+    justify-content: center; 
+}
+
+.moreButton {
+    cursor: pointer;
+    font-weight: 600;
+    font-synthesis: style;
+    border-radius: 25px;
+    color: #8590a6;
+    padding: 0 14px 0 24px;
+    height: 48px;
+    background-color: #fff;
 }

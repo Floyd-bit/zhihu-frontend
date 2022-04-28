@@ -4,9 +4,9 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-10 00:49:54
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-01-07 18:05:18
+ * @LastEditTime: 2022-04-28 23:50:10
  */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Card, Button } from 'antd';
 import style from './index.css';
 import Article from '../components/article/article';
@@ -70,7 +70,7 @@ const AticleDetail: React.FC<{}> = () => {
     const filterRes = answer.filter((item: AnswerRes) => item.aid === data?.id);
 
     const answerList = filterRes.map((item: AnswerRes) =>
-        <Answer key={item.id} description={item.content} date={item.date} avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5} user={item.user}/>
+        <Answer key={item.id} id={item.id} description={item.content} date={item.date} avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5} user={item.user}/>
     )
 
     return (

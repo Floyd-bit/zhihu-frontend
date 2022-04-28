@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-06 23:51:37
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-01-07 16:56:59
+ * @LastEditTime: 2022-04-28 23:51:32
  */
 
 import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from "@ant-design/icons";
@@ -42,12 +42,19 @@ declare interface articleProps {
     isClick?: boolean,
     showBtn: boolean,
     isHtml?: boolean
+    showComment?: Function
+}
+
+interface starStateType {
+    isStar: boolean;
+    isFavoriate: boolean;
 }
 
 export default function(props: articleProps) {
     const [btnStyle, setBtnStyle] = useState(firstCSS);
     const [btntwoStyle, setBtnTwoStyle] = useState(firstCSS);    
     const [starNum, setStarNum] = useState(props.star);
+    const [starState, setStarState] = useState<starStateType>({isStar: false, isFavoriate: false});
 
     const isClickable = () => {
        props.isClick && router.push(`articles/detail?id=${props.id}`);
@@ -74,6 +81,28 @@ export default function(props: articleProps) {
         }
     }
 
+    const comment = () => {
+        props.showComment && props.showComment(props.id);
+    }
+
+    const changeStarState = () => {
+        setStarState((pre: starStateType) => {
+            return {
+                ...pre,
+                isStar: !pre.isStar
+            }
+        });
+    }
+
+    const changeFavoriateState = () => {
+        setStarState((pre: starStateType) => {
+            return {
+                ...pre,
+                isFavoriate: !pre.isFavoriate
+            }
+        });
+    }
+
     return (
         <div className={style.container}>
             <div className={style.clickable} onClick={isClickable}>
@@ -90,10 +119,10 @@ export default function(props: articleProps) {
                     <span style={{display: 'inline-block', marginLeft: '0.3em'}}>{starNum}</span>
                 </Button>
                 <Button style={btntwoStyle.css} onClick={handleOppose}><CaretDownOutlined /></Button>
-                <span className={style.mobile}><CommentOutlined />评论</span>
+                <span className={style.mobile} onClick={comment}><CommentOutlined />评论</span>
                 <span className={style.mobile}><SendOutlined />分享</span>
-                <span className={style.mobile}><StarOutlined />收藏</span>
-                <span className={style.mobile}><HeartOutlined />喜欢</span>
+                <span className={style.mobile} onClick={changeFavoriateState}><StarOutlined style={starState.isFavoriate ? {color: 'orange'} : {}}/>收藏</span>
+                <span className={style.mobile} onClick={changeStarState}><HeartOutlined style={starState.isStar ? {color: 'red'} : {}}/>喜欢</span>
                 <span className={style.mobile}>...</span>
             </div>
             <Divider />

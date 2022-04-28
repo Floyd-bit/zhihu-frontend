@@ -1,0 +1,48 @@
+.columnCard {
+    flex: 1 1;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 28px 24px;
+    min-width: 235px;
+    height: 313px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px 0 rgba(18,18,18,.1);
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+}
+
+.title {
+    margin-top: 20px;
+    height: 22px;
+    line-height: 22px;
+    font-size: 16px;
+    max-width: 187px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    font-synthesis: style;
+}
+
+.count {
+    margin-top: 4px;
+    height: 17px;
+    line-height: 17px;
+    font-size: 12px;
+    color: #999;
+}
+
+.intro {
+    text-align: center;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

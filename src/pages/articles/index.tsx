@@ -5,9 +5,10 @@ import Animal from './components/article/article';
 import HotArticle from './components/hotArticle/hotArticle';
 import VideoGrid from './components/videoGrid/videoGrid';
 import CreateDataShow from './components/createCenter/createDataShow';
+import Comments from './components/comments';
 
 import router from 'umi/router';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { getArticleByPage } from '../../request/api/article';
 import answerPic from '../../assets/answer.png';
 import videoPic from '../../assets/video.png';
@@ -42,6 +43,7 @@ const ArticleComponent: React.FC<{}> = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
     const [isLoading, setIsLoading] = useState(true);
+    const [currentComment, setCurrentComment] = useState(-1);
 
     useEffect(() => {
         setIsLoading(true);
@@ -52,11 +54,25 @@ const ArticleComponent: React.FC<{}> = () => {
         })
     }, [currentPage, pageSize]);
 
-    const animalList = articles.map((item: any, index: number) =>
-        isLoading
-            ? <Skeleton key={index} active />
-            : <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} star={item.articleStar} isClick={true} showBtn={true} />
-    );
+    const showComment = useCallback((id: number) => {
+        setCurrentComment(id);
+    }, []);
+
+    const animalList = useMemo(() => {
+        return articles.map((item: any, index: number) =>{
+            if(isLoading) {
+                return <Skeleton key={index} active />;
+            } else if(currentComment === -1 || currentComment !== item.id) {
+                return <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} star={item.articleStar} isClick={true} showBtn={true} showComment={showComment}/>;
+            } else {
+                return (
+                    <>
+                    <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} star={item.articleStar} isClick={true} showBtn={true} showComment={showComment}/>
+                    <Comments/>
+                    </>
+                )
+            }
+    })}, [currentComment, articles, isLoading]);
 
     const gridClick = useCallback((e: any) => {
         console.log(e.target);

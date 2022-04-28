@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-21 20:14:07
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-01-07 18:12:08
+ * @LastEditTime: 2022-04-28 22:30:42
  */
 import { getUserInfo } from "@/request/api/user";
 import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from "@ant-design/icons";
@@ -35,12 +35,19 @@ const secondCSS = {
 
 export declare interface AnswerInterface {
     key: number,
+    id: number,
     description: string,
     date: string,
     avatar: string,
     star: number,
-    user: number
+    user: number,
 }
+
+interface starStateType {
+    isStar: boolean;
+    isFavoriate: boolean;
+}
+
 
 export const primaryUser = {
     username: "灰灰计算机考研",
@@ -56,12 +63,31 @@ export default function (props: AnswerInterface) {
     const [btntwoStyle, setBtnTwoStyle] = useState(firstCSS);
     const [starNum, setStarNum] = useState(props.star);
     const [user, setUser] = useState<UserInfoRes>(primaryUser);
+    const [starState, setStarState] = useState<starStateType>({isStar: false, isFavoriate: false});
     
     useEffect(() => {
         getUserInfo(props.user).then((res: any) => {
             setUser(res.data);
         })
     }, []);
+
+    const changeStarState = () => {
+        setStarState((pre: starStateType) => {
+            return {
+                ...pre,
+                isStar: !pre.isStar
+            }
+        });
+    }
+
+    const changeFavoriateState = () => {
+        setStarState((pre: starStateType) => {
+            return {
+                ...pre,
+                isFavoriate: !pre.isFavoriate
+            }
+        });
+    }
 
     const handleStar = () => {
         if (btnStyle.key === 1) {
@@ -111,8 +137,8 @@ export default function (props: AnswerInterface) {
                         <Button style={btntwoStyle.css} onClick={handleOppose}><CaretDownOutlined /></Button>
                         <span className={style.hidden}><CommentOutlined />评论</span>
                         <span className={style.hidden}><SendOutlined />分享</span>
-                        <span className={style.hidden}><StarOutlined />收藏</span>
-                        <span className={style.hidden}><HeartOutlined />喜欢</span>
+                        <span className={style.hidden} onClick={changeFavoriateState}><StarOutlined style={starState.isFavoriate ? {color: 'orange'} : {}}/>收藏</span>
+                        <span className={style.hidden} onClick={changeStarState}><HeartOutlined style={starState.isStar ? {color: 'red'} : {}}/>喜欢</span>
                         <span className={style.hidden}>...</span>
                     </div>
                 </div>

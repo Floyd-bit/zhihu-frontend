@@ -29,6 +29,10 @@
     width: auto;
 }
 
+.mobile {
+    cursor: pointer;
+}
+
 @media(max-width: 1200px) {
     .mobile {
         display: none;

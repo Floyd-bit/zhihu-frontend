@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 18:40:13
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-01-07 16:59:37
+ * @LastEditTime: 2022-04-28 23:43:23
  */
 import React from 'react';
 import styles from './index.css';
@@ -78,6 +78,12 @@ const handleClick = (e: { key: any; }) => {
   switch(e.key) {
     case 'frontpage-menu': 
       router.push('/articles');
+      break;
+    case 'info-menu':
+      router.push('/explore');
+      break;
+    case 'smart-menu':
+      router.push('/waiting');
       break;
   }
 }

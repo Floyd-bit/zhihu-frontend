@@ -29,6 +29,10 @@
     width: 550px;
 }
 
+.hidden {
+    cursor: pointer;
+}
+
 @media(max-width: 1200px) {
     .mobile {
         margin: 0 !important;
