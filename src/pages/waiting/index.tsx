@@ -4,12 +4,13 @@
  * @Author: 赵卓轩
  * @Date: 2022-04-28 22:34:26
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-04-29 00:38:31
+ * @LastEditTime: 2022-04-30 18:25:25
  */
 import { UserOutlined } from '@ant-design/icons';
 import { Button, Card, List, message } from 'antd';
 import React, { useCallback, useState, MouseEvent } from 'react';
 import CreateDataShow from '../articles/components/createCenter/createDataShow';
+import Question from './question';
 import style from './style.css';
 
 import answerPic from '../../assets/answer.png';
@@ -63,7 +64,9 @@ const Waiting: React.FC<{}> = () => {
     return (
         <div className={style.sitecardborderlesswrapper}>
             <div className={style.contentCard}>
+                <div>
                 <div className={style.sticky}>
+                    <div className={style.stickywrapper}></div>
                     <div className={style.tablist} onClick={changeTab}>
                         <div className={style.tab}>
                             <span className={style.tabtext} style={currentTab === 1 ? { color: '#06f' } : { color: '#444' }}>为你推荐</span>
@@ -79,8 +82,11 @@ const Waiting: React.FC<{}> = () => {
                         </div>
                     </div>
                 </div>
+                </div>
                 <div className={style.questions}>
-                    
+                    <Question/>
+                    <Question/>
+                    <Question/>
                 </div>
             </div>
             <div className={style.rightColumn}>
