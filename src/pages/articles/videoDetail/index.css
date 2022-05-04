@@ -1,0 +1,27 @@
+.container {
+    margin: 24px auto;
+    max-width: 1000px;
+    padding: 0 16px;
+    display: flex;
+}
+
+.mainColumn {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.sideColumn {
+    width: 286px;
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+.videoRecommendationsTitle {
+    font-weight: 600;
+    font-synthesis: style;
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 17px;
+    line-height: 20px;
+    color: #121212;
+}
