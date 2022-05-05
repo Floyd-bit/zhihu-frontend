@@ -1,0 +1,102 @@
+.videoContainer {
+    width: 700px;
+    height: 400px;
+}
+
+.footer {
+    color: grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin-top: 10px;
+}
+
+.mobile {
+    cursor: pointer;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    margin: 16px 0;
+}
+
+.authorAvatar {
+    margin-right: 8px;
+}
+
+.avatar {
+    display: block;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+}
+
+.authorContent {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex: 1 1;
+}
+
+.authorName {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 15px;
+    line-height: 16px;
+    color: #121212;
+}
+
+.authorDescription {
+    overflow: hidden;
+    margin-top: 2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+    line-height: 16px;
+    color: #999;
+}
+
+.content {
+    padding: 0 0 16px;
+}
+
+.headline {
+    display: flex;
+}
+
+.title {
+    overflow: hidden;
+    flex: 1 1;
+    font-size: 18px;
+    line-height: 25px;
+    color: #121212;
+    font-weight: 600;
+    margin: 0;
+}
+
+.description {
+    white-space: pre-line;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 21px;
+    color: #444;
+    margin: 0;
+}
+
+.meta {
+    align-items: center;
+    display: flex;
+    margin-top: 6px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 17px;
+    color: #999;
+}
+
+
+
