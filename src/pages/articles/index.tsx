@@ -73,6 +73,7 @@ const ArticleComponent: React.FC<{}> = () => {
                 )
             }
     })}, [currentComment, articles, isLoading]);
+    
 
     const gridClick = useCallback((e: any) => {
         console.log(e.target);

@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+    padding: 10px 100px;
+    min-height: 100vh;
+    margin: 10px auto;
+    color: #121212;
+}
+
+.searchMain {
+    flex: 1;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.searchSideBar {
+    width: 300px;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0 20px;
+    border-bottom: 1px solid #f6f6f6;
+    box-sizing: border-box;
+}
+
+.topSearch {
+    padding: 8px 16px;
+}
+
+.headerText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+    font-synthesis: style;
+}
+
+.searchItem {
+    margin: 6px 0;
+    overflow: hidden;
+}
+
+.searchItemLink {
+    line-height: 21px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.itemText {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 21px;
+    width: 100%;
+}
+
