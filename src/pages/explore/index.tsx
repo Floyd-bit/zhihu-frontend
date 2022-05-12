@@ -4,14 +4,13 @@
  * @Author: 赵卓轩
  * @Date: 2022-04-27 22:44:04
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-04-28 16:36:06
+ * @LastEditTime: 2022-05-12 16:01:27
  */
 import { Card } from 'antd';
 import React from 'react';
 import styles from './style.css';
 import ProblemList from './problemList';
 import SpecialCard from './SpecialCard';
-import columnCard from './columnCard';
 import ColumnCard from './columnCard';
 
 const Explore: React.FC<{}> = () => {

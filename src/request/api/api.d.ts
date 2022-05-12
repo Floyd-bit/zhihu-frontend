@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-31 17:15:22
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-31 21:08:09
+ * @LastEditTime: 2022-05-12 15:55:03
  */
 interface loginParam {
     username: string,
@@ -32,4 +32,20 @@ interface getAnswerParam {
     page: number
 }
 
-export {loginParam, getArticleParam, addArticleParam, getAnswerParam};
+interface addAnswerParam {
+    aid: number,
+    content: string,
+    data: string,
+    user: number
+}
+
+interface addCommentParam {
+    answerId: number,
+    content: string,
+    createTime: string,
+    pid: number,
+    replyUserId: number,
+    userId: number
+}
+
+export {loginParam, getArticleParam, addArticleParam, getAnswerParam, addAnswerParam, addCommentParam};
