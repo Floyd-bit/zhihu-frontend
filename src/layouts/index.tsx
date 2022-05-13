@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 18:40:13
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-04-28 23:43:23
+ * @LastEditTime: 2022-05-13 23:11:23
  */
 import React from 'react';
 import styles from './index.css';
@@ -31,7 +31,10 @@ const change = (title: any) => {
   console.log(title);
 }
 
-const onSearch = (value: string) => console.log(value);
+const onSearch = (value: string) => {
+  const keyword = encodeURI(value);
+  router.push(`/searchResult?keyword=${keyword}`);
+}
 
 const  menuItem = noticeList.map((i)=>
   <Menu.Item key={i}>

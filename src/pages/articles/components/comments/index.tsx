@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2022-04-28 17:39:55
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-04-28 21:14:45
+ * @LastEditTime: 2022-05-13 22:33:58
  */
 import { Comment, Tooltip, List, Card, Input } from 'antd';
 import moment from 'moment';
@@ -92,8 +92,8 @@ const Comments: React.FC<{}> = () => {
                 header={`${data.length}条评论`}
                 itemLayout="horizontal"
                 dataSource={data}
-                renderItem={item => (
-                    <li>
+                renderItem={(item, index) => (
+                    <li key={index}>
                         <Comment
                             actions={item.actions}
                             author={item.author}

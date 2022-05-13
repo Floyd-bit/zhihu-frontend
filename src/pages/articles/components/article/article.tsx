@@ -54,6 +54,7 @@ export default function(props: articleProps) {
     const [btnStyle, setBtnStyle] = useState(firstCSS);
     const [btntwoStyle, setBtnTwoStyle] = useState(firstCSS);    
     const [starNum, setStarNum] = useState(props.star);
+    const [isCommentExpand, setIsCommentExpand] = useState(false);
     const [starState, setStarState] = useState<starStateType>({isStar: false, isFavoriate: false});
 
     const isClickable = () => {

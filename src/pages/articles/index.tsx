@@ -55,8 +55,12 @@ const ArticleComponent: React.FC<{}> = () => {
     }, [currentPage, pageSize]);
 
     const showComment = useCallback((id: number) => {
-        setCurrentComment(id);
-    }, []);
+        if(id === currentComment) {
+            setCurrentComment(-1);
+        } else {
+            setCurrentComment(id);
+        }
+    }, [currentComment]);
 
     const animalList = useMemo(() => {
         return articles.map((item: any, index: number) =>{

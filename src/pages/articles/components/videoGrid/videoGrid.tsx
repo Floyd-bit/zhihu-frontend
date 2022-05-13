@@ -4,17 +4,22 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-08 20:54:40
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-01-01 16:02:50
+ * @LastEditTime: 2022-05-13 23:33:33
  */
-import React from 'react';
+import React, { useCallback } from 'react';
 import style from './videoGrid.css';
 import { Avatar, Image } from 'antd';
 import { PlayCircleOutlined } from '@ant-design/icons';
 import Link from 'umi/link';
+import router from 'umi/router';
 
-export default () => {
+const VideoGrid:React.FC<{}> = () => {
+    const linktoVideo = useCallback(() => {
+        router.push('/articles/video')
+    }, []);
+
     return (
-        <div className={style.container}>
+        <div className={style.container} onClick={linktoVideo}>
             <div className={style.cover}>
                 <Link to='/articles'><Image preview={false} src="https://pic1.zhimg.com/80/v2-1ff047be5330509bb33c34b2f374e7fe_400x224.jpg?source=1940ef5c"></Image></Link>
                 <div className={style.hoverText}>
@@ -38,3 +43,5 @@ export default () => {
         </div>
     )
 }
+
+export default React.memo(VideoGrid);

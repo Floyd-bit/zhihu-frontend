@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-10 00:49:54
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-04-28 23:50:10
+ * @LastEditTime: 2022-05-13 22:07:16
  */
 import React, { useState, useEffect, useCallback } from 'react';
 import { Card, Button } from 'antd';
@@ -13,7 +13,7 @@ import Article from '../components/article/article';
 import Answer, { primaryUser } from '../components/answers/index';
 import UserInfo from '../components/userInfo/index';
 import { getArticleById } from '../../../request/api/article';
-import { getAnswerByPage } from '../../../request/api/answer';
+import { getAnswersByAid } from '../../../request/api/answer';
 import { addArticleParam } from '@/request/api/api';
 import { UserInfoRes } from '../components/userInfo/index';
 import { getUserInfo } from '@/request/api/user';
@@ -56,20 +56,18 @@ const AticleDetail: React.FC<{}> = () => {
     }, []);
 
     useEffect(() => {
-        getAnswerByPage({ size: 5, page: 1 }).then((res: any) => {
-            setAnswer(res.result.content);
+        getAnswersByAid(parseInt(id)).then((res: any) => {
+            setAnswer(res.result);
         })
     }, []);
 
     useEffect(() => {
-        filterRes.length && getUserInfo(filterRes[0]?.user ?? 1).then((res: any) => {
+        answer.length && getUserInfo(answer[0]?.user ?? 1).then((res: any) => {
             setUser(res.data);
         })
     }, [answer]);
 
-    const filterRes = answer.filter((item: AnswerRes) => item.aid === data?.id);
-
-    const answerList = filterRes.map((item: AnswerRes) =>
+    const answerList = answer.map((item: AnswerRes) =>
         <Answer key={item.id} id={item.id} description={item.content} date={item.date} avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5} user={item.user}/>
     )
 

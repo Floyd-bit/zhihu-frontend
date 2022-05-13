@@ -4,16 +4,38 @@
  * @Author: 赵卓轩
  * @Date: 2022-04-27 22:44:04
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-12 16:01:27
+ * @LastEditTime: 2022-05-13 21:53:27
  */
 import { Card } from 'antd';
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from './style.css';
 import ProblemList from './problemList';
 import SpecialCard from './SpecialCard';
 import ColumnCard from './columnCard';
+import { getExplorecolumn, getRoundTable, getExploreSpecial } from '@/request/api/explore';
+import { exploreColumnState, exploreSpecialData, exploreSpecialState, roundTableState } from "./type";
 
 const Explore: React.FC<{}> = () => {
+    const [exploreColumn, setExploreColumn] = useState<exploreColumnState>();
+    const [roundTable, setRoundTable] = useState<roundTableState>();
+    const [exploreSpecial, setExploreSpecial] = useState<exploreSpecialState>();
+    
+    useEffect(() => {
+        getExplorecolumn().then(res => {
+            console.log(res)
+        });
+        getRoundTable().then(res => {
+            console.log(res)
+        });
+        getExploreSpecial().then(res => {
+            console.log(res)
+        });
+    }, []);
+    
+    const SprcialCardList = exploreSpecial?.data.map((item: exploreSpecialData, index: number) => {
+        return <SpecialCard key={index}/>
+    })
+
     return (
     <div className={styles.container}>
         <div className={styles.title}>
