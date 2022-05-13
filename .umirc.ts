@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 18:40:12
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-09 18:18:33
+ * @LastEditTime: 2022-05-14 00:32:19
  */
 import { IConfig } from 'umi-types';
 
@@ -23,9 +23,9 @@ const config: IConfig =  {
       "pathRewrite": {"^/api": "/api"}
     },
     "/mock": {
-      "target": "https://www.fastmock.site/mock/f23fc9c6da1012951095f00c89ccb6a8",
+      "target": "https://service-9ngbcie8-1305610595.gz.apigw.tencentcs.com/release",
       "changeOrigin": true,
-      "pathRewrite": {"^/mock": "/api"}
+      "pathRewrite": {"^/mock": ""}
     }
   },
   routes: [
