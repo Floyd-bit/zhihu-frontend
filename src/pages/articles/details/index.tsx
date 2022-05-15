@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-10 00:49:54
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-13 22:07:16
+ * @LastEditTime: 2022-05-16 01:24:25
  */
 import React, { useState, useEffect, useCallback } from 'react';
 import { Card, Button } from 'antd';
@@ -51,21 +51,16 @@ const AticleDetail: React.FC<{}> = () => {
     useEffect(() => {
         getArticleById(parseInt(id)).then((res: any) => {
             setData(res.result);
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    useEffect(() => {
+        });
         getAnswersByAid(parseInt(id)).then((res: any) => {
             setAnswer(res.result);
-        })
+            const userId = res.result.length ? res.result.user : 1;
+            getUserInfo(userId).then((res: any) => {
+                setUser(res);
+            })
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    useEffect(() => {
-        answer.length && getUserInfo(answer[0]?.user ?? 1).then((res: any) => {
-            setUser(res.data);
-        })
-    }, [answer]);
 
     const answerList = answer.map((item: AnswerRes) =>
         <Answer key={item.id} id={item.id} description={item.content} date={item.date} avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5} user={item.user}/>

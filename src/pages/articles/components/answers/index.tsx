@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-21 20:14:07
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-04-28 22:30:42
+ * @LastEditTime: 2022-05-16 01:24:05
  */
 import { getUserInfo } from "@/request/api/user";
 import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from "@ant-design/icons";
@@ -67,7 +67,7 @@ export default function (props: AnswerInterface) {
     
     useEffect(() => {
         getUserInfo(props.user).then((res: any) => {
-            setUser(res.data);
+            setUser(res);
         })
     }, []);
 

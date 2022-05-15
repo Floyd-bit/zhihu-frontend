@@ -4,15 +4,15 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-08 20:21:46
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-10-08 20:42:59
+ * @LastEditTime: 2022-05-15 21:21:18
  */
 import { CommentOutlined, SendOutlined, FireOutlined } from "@ant-design/icons";
 import { Divider, Image } from "antd";
 import React from "react";
 import style from './hotArticle.css';
+import { hotArticleProps } from "./type";
 
-
-export default function (props: any) {
+const HotArticle:React.FC<hotArticleProps> = (props: any) => {
     return (
         <>
             <div className={style.container}>
@@ -36,3 +36,5 @@ export default function (props: any) {
         </>
     )
 }
+
+export default React.memo(HotArticle);

@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2022-04-27 22:44:04
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-15 17:58:56
+ * @LastEditTime: 2022-05-15 20:08:22
  */
 import { Card, Skeleton } from 'antd';
 import React, { useEffect, useState } from 'react';
@@ -15,7 +15,7 @@ import ColumnCard from './columnCard';
 import { getExplorecolumn, getRoundTable, getExploreSpecial } from '@/request/api/explore';
 import { getArticleByPage } from '@/request/api/article';
 import { exploreColumnData, exploreColumnState, exploreSpecialData, exploreSpecialState, roundTableState } from "./type";
-import { resType, articleType} from '../articles/type';
+import { articleType } from '../articles/type';
 
 const Explore: React.FC<{}> = () => {
     const [questions, setQuestions] = useState<Array<articleType>>();

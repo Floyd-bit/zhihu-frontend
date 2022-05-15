@@ -1,9 +1,7 @@
-import { Card, Tabs, List, Row, Col, Pagination, Skeleton, message, Button } from 'antd';
+import { Card, Tabs, List, Pagination, Skeleton, message, Button } from 'antd';
 import { EyeOutlined, VideoCameraOutlined, FireOutlined, LikeOutlined, UserOutlined } from '@ant-design/icons';
 import style from './index.css';
 import Animal from './components/article/article';
-import HotArticle from './components/hotArticle/hotArticle';
-import VideoGrid from './components/videoGrid/videoGrid';
 import CreateDataShow from './components/createCenter/createDataShow';
 import Comments from './components/comments';
 
@@ -18,7 +16,6 @@ import livePic from '../../assets/liveIcon.png';
 
 
 const { TabPane } = Tabs;
-
 
 const mockData = {
     title: '如何看待第 30 届全国中学生生物奥林匹克竞赛萧山中学 11 金 1 银 10 人进国家集训队的成绩？',
@@ -44,6 +41,10 @@ const ArticleComponent: React.FC<{}> = () => {
     const [pageSize, setPageSize] = useState(10);
     const [isLoading, setIsLoading] = useState(true);
     const [currentComment, setCurrentComment] = useState(-1);
+
+    // 组件懒加载
+    const Video = React.lazy(() => import('./components/videoGrid/video'));
+    const HotQuestion = React.lazy(() => import('./components/hotArticle/hotArticle'));
 
     useEffect(() => {
         setIsLoading(true);
@@ -133,7 +134,9 @@ const ArticleComponent: React.FC<{}> = () => {
                         </span>}
                         key="hot"
                     >
-                        <HotArticle title={mockData.title} description={mockData.description} hotNumber={3336} src="https://pic1.zhimg.com/80/v2-1ff047be5330509bb33c34b2f374e7fe_400x224.jpg?source=1940ef5c"></HotArticle>
+                        <React.Suspense fallback={<Skeleton />}>
+                            <HotQuestion title={mockData.title} description={mockData.description} hotNumber={3336} src="https://pic1.zhimg.com/80/v2-1ff047be5330509bb33c34b2f374e7fe_400x224.jpg?source=1940ef5c"></HotQuestion>
+                        </React.Suspense>
                     </TabPane>
                     <TabPane
                         tab={<span>
@@ -142,11 +145,9 @@ const ArticleComponent: React.FC<{}> = () => {
                         </span>}
                         key="videos"
                     >
-                        <Row gutter={[16, 16]}>
-                            <Col span={8}><VideoGrid /></Col>
-                            <Col span={8}><VideoGrid /></Col>
-                            <Col span={8}><VideoGrid /></Col>
-                        </Row>
+                        <React.Suspense fallback={<Skeleton />}>
+                            <Video/>
+                        </React.Suspense>
                     </TabPane>
                 </Tabs>
             </Card>

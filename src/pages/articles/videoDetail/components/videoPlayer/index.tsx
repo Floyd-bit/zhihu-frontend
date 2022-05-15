@@ -4,22 +4,14 @@
  * @Author: 赵卓轩
  * @Date: 2022-05-04 21:44:41
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-06 00:19:40
+ * @LastEditTime: 2022-05-15 22:09:01
  */
 import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import Player from 'griffith';
 import React, { CSSProperties, useState } from 'react';
 import styles from './index.css';
-
-const sources = {
-    hd: {
-      play_url: 'https://zhstatic.zhihu.com/cfe/griffith/zhihu2018_hd.mp4',
-    },
-    sd: {
-      play_url: 'https://zhstatic.zhihu.com/cfe/griffith/zhihu2018_sd.mp4',
-    },
-}
+import { videoType } from '@/pages/articles/components/videoGrid/type';
 
 const primaryStyle: CSSProperties = {
     backgroundColor: '#E5EFFF',
@@ -41,28 +33,25 @@ const secondCSS = {
     css: changedStyle
 }
 
-declare interface articleProps {
-    key?: number,
-    id?: number,
-    title: string,
-    description: string,
-    star?: number,
-    isClick?: boolean,
-    showBtn: boolean,
-    isHtml?: boolean
-    showComment?: Function
-}
-
 interface starStateType {
     isStar: boolean;
     isFavoriate: boolean;
 }
 
-const VideoPlayer:React.FC<{}> = () => {
+const VideoPlayer:React.FC<videoType> = (props) => {
     const [btnStyle, setBtnStyle] = useState(firstCSS);
     const [btntwoStyle, setBtnTwoStyle] = useState(firstCSS);    
-    const [starNum, setStarNum] = useState(135);
+    const [starNum, setStarNum] = useState(props.star);
     const [starState, setStarState] = useState<starStateType>({isStar: false, isFavoriate: false});
+
+    const sources = {
+        hd: {
+          play_url: props.videoUrl,
+        },
+        sd: {
+          play_url: props.videoUrl,
+        },
+    }
 
     const handleStar = () => {
         if(btnStyle.key === 1) {
@@ -106,27 +95,27 @@ const VideoPlayer:React.FC<{}> = () => {
     return (
         <>
             <div className={styles.videoContainer}>
-                <Player sources={sources} id="video" cover='https://camo.githubusercontent.com/bf4a2c12b078e1711f1fa2f74c0bdfaa83806e2f4ef531895b06c17fb4278053/68747470733a2f2f7a687374617469632e7a686968752e636f6d2f6366652f67726966666974682f706c617965722e706e67' locale='zh-Hans'/>
+                <Player sources={sources} id="video" cover={props.cover} locale='zh-Hans'/>
             </div>
             <div className={styles.author}>
                 <span className={styles.authorAvatar}>
-                    <img src='https://pic1.zhimg.com/v2-4299efbec62ccc5aafd75688ed23138b_is.jpg?source=12a79843' className={styles.avatar}></img>
+                    <img src={props.authorAvatar} className={styles.avatar}></img>
                 </span>
                 <div className={styles.authorContent}>
-                    <span className={styles.authorName}>宇宙搜索队</span>
-                    <div className={styles.authorDescription}>我们熟悉的，并不是我们最了解的</div>
+                    <span className={styles.authorName}>{props.author}</span>
+                    <div className={styles.authorDescription}>{props.authorDesc}</div>
                 </div>
                 <Button type='primary' ghost style={{ minWidth: '96px', marginLeft: '8px' }}>+关注</Button>
             </div>
             <div className={styles.content}>
                 <div>
                     <div className={styles.headline}>
-                        <h1 className={styles.title}>这绝对是一个世界级别的守门员！</h1>
+                        <h1 className={styles.title}>{props.title}</h1>
                     </div>
-                    <p className={styles.description}>这绝对是一个世界级别的守门员！</p>
+                    <p className={styles.description}>{props.title}</p>
                 </div>
                 <div className={styles.meta}>
-                   发布于 2022-04-09 11:00 · 49.6 万次播放
+                   发布于 {props.time} · {props.play}次播放
                 </div>
             </div>
             <div className={styles.footer}>
