@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2022-05-12 18:32:15
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-13 14:42:46
+ * @LastEditTime: 2022-05-15 17:28:33
  */
 interface exploreSpecialContent {
     title: string,
@@ -49,4 +49,4 @@ interface roundTableState {
     data: Array<roundTableData>
 }
 
-export { roundTableState, exploreColumnState, exploreSpecialState, exploreColumnData, exploreSpecialData, roundTableData                                                                                                                                                                                                                                                                                         };
+export { roundTableState, exploreColumnState, exploreSpecialState, exploreColumnData, exploreSpecialContent, exploreSpecialData, roundTableData                                                                                                                                                                                                                                                                                         };
