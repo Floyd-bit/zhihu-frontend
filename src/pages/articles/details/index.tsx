@@ -4,16 +4,16 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-10 00:49:54
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-16 01:24:25
+ * @LastEditTime: 2022-05-17 18:09:35
  */
 import React, { useState, useEffect, useCallback } from 'react';
-import { Card, Button } from 'antd';
+import { Card, Button, Skeleton } from 'antd';
 import style from './index.css';
 import Article from '../components/article/article';
 import Answer, { primaryUser } from '../components/answers/index';
 import UserInfo from '../components/userInfo/index';
 import { getArticleById } from '../../../request/api/article';
-import { getAnswersByAid } from '../../../request/api/answer';
+import { getAnswersByAid, addAnswer } from '../../../request/api/answer';
 import { addArticleParam } from '@/request/api/api';
 import { UserInfoRes } from '../components/userInfo/index';
 import { getUserInfo } from '@/request/api/user';
@@ -40,10 +40,13 @@ const primaryAnswer = {
     articleTitle: ''
 }
 
+const AddAnswerComponent = React.lazy(() => import('./addAnswer/index'));
+
 const AticleDetail: React.FC<{}> = () => {
     const [data, setData] = useState<addArticleParam>(primaryAnswer);
     const [answer, setAnswer] = useState<Array<AnswerRes>>([]);
     const [user, setUser] = useState<UserInfoRes>(primaryUser);
+    const [isAddShow, setIsAddShow] = useState(false);
 
     const parmas = window.location.search;
     const id = parmas.split('=')[1];
@@ -66,6 +69,20 @@ const AticleDetail: React.FC<{}> = () => {
         <Answer key={item.id} id={item.id} description={item.content} date={item.date} avatar="https://pic1.zhimg.com/v2-7b800df37614e70e7d2291aec2fed60a_xs.jpg?source=1940ef5c" star={5} user={item.user}/>
     )
 
+    const closeAddComponent = useCallback(() => {
+        setIsAddShow(false);
+    }, []);
+
+    const fetchAddAnswer = useCallback((content: string) => {
+        const addParams = {
+            aid: data.id,
+            content: content,
+            date: new Date().toLocaleDateString(),
+            user: 1
+        }
+        console.log(addParams);
+    }, [data]);
+
     return (
         <div className={style.container}>
             <div className={style.topContainer}>
@@ -74,7 +91,7 @@ const AticleDetail: React.FC<{}> = () => {
                         <Article title={data.articleTitle} description={data.articleContentHtml} isHtml={true} showBtn={false} />
                         <div>
                             <Button type="primary" style={{ marginRight: '20px' }}>关注帖子</Button>
-                            <Button type="primary" ghost style={{ marginRight: '20px' }}>
+                            <Button type="primary" ghost style={{ marginRight: '20px' }} onClick={() => setIsAddShow(pre => !pre)}>
                                 写回答
                             </Button>
                             <Button type="dashed" danger>邀请回答</Button>
@@ -92,6 +109,14 @@ const AticleDetail: React.FC<{}> = () => {
                     </div>
                 </Card>
             </div>
+            {
+                isAddShow &&
+                <div className={style.editorContainer}>
+                    <React.Suspense fallback={<Skeleton active></Skeleton>}>
+                        <AddAnswerComponent closeAddComponent={closeAddComponent} fetchAddAnswer={fetchAddAnswer}/>
+                    </React.Suspense>
+                </div>
+            }
             <div className={style.bottomContainer}>
                 <div className={style.articleList}>
                     {answerList}

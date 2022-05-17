@@ -38,6 +38,11 @@
     align-items: flex-start;
 }
 
+.editorContainer {
+    width: 80%;
+    margin: 0 auto;
+}
+
 .articleList {
     width: 60%;
     background: cornsilk;
