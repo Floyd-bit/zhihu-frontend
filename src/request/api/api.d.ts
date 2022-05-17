@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-31 17:15:22
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-12 15:55:03
+ * @LastEditTime: 2022-05-17 21:00:40
  */
 interface loginParam {
     username: string,
@@ -35,7 +35,7 @@ interface getAnswerParam {
 interface addAnswerParam {
     aid: number,
     content: string,
-    data: string,
+    date: string,
     user: number
 }
 

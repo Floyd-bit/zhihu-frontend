@@ -4,21 +4,23 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-10 00:49:54
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-17 18:09:35
+ * @LastEditTime: 2022-05-17 22:38:24
  */
 import React, { useState, useEffect, useCallback } from 'react';
-import { Card, Button, Skeleton } from 'antd';
+import { Card, Button, Skeleton, message } from 'antd';
 import style from './index.css';
 import Article from '../components/article/article';
 import Answer, { primaryUser } from '../components/answers/index';
 import UserInfo from '../components/userInfo/index';
 import { getArticleById } from '../../../request/api/article';
 import { getAnswersByAid, addAnswer } from '../../../request/api/answer';
+import { addAnswerParam } from '@/request/api/api';
 import { addArticleParam } from '@/request/api/api';
 import { UserInfoRes } from '../components/userInfo/index';
 import { getUserInfo } from '@/request/api/user';
+import { dateToString } from '@/utils/time';
 
-interface AnswerRes {
+export interface AnswerRes {
     id: number,
     aid: number,
     content: string,
@@ -40,6 +42,10 @@ const primaryAnswer = {
     articleTitle: ''
 }
 
+interface resType {
+    [propname: string]: string
+}
+
 const AddAnswerComponent = React.lazy(() => import('./addAnswer/index'));
 
 const AticleDetail: React.FC<{}> = () => {
@@ -57,7 +63,7 @@ const AticleDetail: React.FC<{}> = () => {
         });
         getAnswersByAid(parseInt(id)).then((res: any) => {
             setAnswer(res.result);
-            const userId = res.result.length ? res.result.user : 1;
+            const userId = res.result.length ? res.result[0].user : 1;
             getUserInfo(userId).then((res: any) => {
                 setUser(res);
             })
@@ -74,13 +80,25 @@ const AticleDetail: React.FC<{}> = () => {
     }, []);
 
     const fetchAddAnswer = useCallback((content: string) => {
-        const addParams = {
-            aid: data.id,
+        const addParams: addAnswerParam = {
+            aid: data.id || 1,
             content: content,
-            date: new Date().toLocaleDateString(),
+            date: dateToString(new Date()),
             user: 1
-        }
-        console.log(addParams);
+        };
+        setAnswer(pre => [{...addParams, id: 0}, ...pre]);
+        addAnswer(addParams).then((res) => {
+            const result = res as resType;
+            if(result.message === '成功') {
+                message.success({
+                    content: result.result,
+                    className: 'success-class',
+                    style: {
+                        marginTop: '8vh',
+                    },
+                });
+            }
+        });
     }, [data]);
 
     return (

@@ -4,114 +4,67 @@
  * @Author: 赵卓轩
  * @Date: 2022-04-28 17:39:55
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-13 22:33:58
+ * @LastEditTime: 2022-05-18 00:30:20
  */
-import { Comment, Tooltip, List, Card, Input } from 'antd';
-import moment from 'moment';
-import React, { createElement, useState } from 'react';
-import { DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled, MehTwoTone } from '@ant-design/icons';
+import { Card, Input } from 'antd';
+import React, {  useEffect, useMemo, useState } from 'react';
+import { MehTwoTone } from '@ant-design/icons';
+import { getCommentByAid } from '@/request/api/comment';
+import { getAnswersByAid } from '@/request/api/answer';
+import { AnswerRes } from '../../details/index';
+import { resType, commentType } from '../../type';
+import CommentComponent from './commentComponent';
+import { tranverseToTree, treeType } from '@/utils/commentTree';
 import './style.css';
 
 const { Search } = Input;
 
-const Comments: React.FC<{}> = () => {
-    const [likes, setLikes] = useState(0);
-    const [dislikes, setDislikes] = useState(0);
-    const [action, setAction] = useState('');
+const Comments: React.FC<{id: number, type: 'question' | 'answer'}> = (props) => {
+    const [comment, setComment] = useState<Array<commentType>>([]);
 
-    const onSearch = (value: string) => console.log(value);
+    useEffect(() => {
+        if(props.type === 'question') {
+            getAnswersByAid(props.id).then(res => {
+                const result = res as resType<AnswerRes>;
+                if(result.result.length) {
+                    const answerId = result.result[0].id;
+                    getCommentByAid(answerId).then(res => {
+                        const resl = res as resType<commentType>;
+                        setComment(resl.result);
+                    })
+                }
+            })
+        } else {
+            getCommentByAid(props.id).then(res => {
+                const resl = res as resType<commentType>;
+                setComment(resl.result);
+            })
+        }
+    }, []);
 
-    const like = () => {
-        setLikes(1);
-        setDislikes(0);
-        setAction('liked');
-    };
+    const onSearch = (value: string) => {
+        console.log(value);
+    }
 
-    const dislike = () => {
-        setLikes(0);
-        setDislikes(1);
-        setAction('disliked');
-    };
-    const actions = [
-        <Tooltip key="comment-basic-like" title="Like">
-            <span onClick={like}>
-                {createElement(action === 'liked' ? LikeFilled : LikeOutlined)}
-                <span className="comment-action">{likes}</span>
-            </span>
-        </Tooltip>,
-        <Tooltip key="comment-basic-dislike" title="Dislike">
-            <span onClick={dislike}>
-                {React.createElement(action === 'disliked' ? DislikeFilled : DislikeOutlined)}
-                <span className="comment-action">{dislikes}</span>
-            </span>
-        </Tooltip>,
-        <span key="comment-basic-reply-to">回复</span>,
-    ];
-
-    const data = [
-        {
-            actions: [actions],
-            author: 'Han Solo',
-            avatar: 'https://joeschmoe.io/api/v1/random',
-            content: (
-                <p>
-                    We supply a series of design principles, practical patterns and high quality design
-                    resources (Sketch and Axure), to help people create their product prototypes beautifully and
-                    efficiently.
-                </p>
-            ),
-            datetime: (
-                <Tooltip title={moment().subtract(1, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-                    <span>{moment().subtract(1, 'days').fromNow()}</span>
-                </Tooltip>
-            ),
-        },
-        {
-            actions: [actions],
-            author: 'Han Solo',
-            avatar: 'https://joeschmoe.io/api/v1/random',
-            content: (
-                <p>
-                    We supply a series of design principles, practical patterns and high quality design
-                    resources (Sketch and Axure), to help people create their product prototypes beautifully and
-                    efficiently.
-                </p>
-            ),
-            datetime: (
-                <Tooltip title={moment().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-                    <span>{moment().subtract(2, 'days').fromNow()}</span>
-                </Tooltip>
-            ),
-        },
-    ];
+    const CommentList = useMemo(() => {
+        const tree:Array<treeType> = tranverseToTree(comment);
+        return tree.map((item: treeType) => {
+            return(
+                <CommentComponent key={item.id} data={item}>
+                    {item.children && item.children.map((item: commentType) => {
+                        return (
+                            <CommentComponent key={item.id} data={item}>
+                            </CommentComponent>
+                        )
+                    })}
+                </CommentComponent>
+            )    
+        })
+    }, [comment]);
 
     return (
         <Card>
-            <List
-                className="comment-list"
-                header={`${data.length}条评论`}
-                itemLayout="horizontal"
-                dataSource={data}
-                renderItem={(item, index) => (
-                    <li key={index}>
-                        <Comment
-                            actions={item.actions}
-                            author={item.author}
-                            avatar={item.avatar}
-                            content={item.content}
-                            datetime={item.datetime}
-                        >
-                            <Comment
-                                actions={item.actions}
-                                author={item.author}
-                                avatar={item.avatar}
-                                content={item.content}
-                                datetime={item.datetime}
-                            />
-                        </Comment>
-                    </li>
-                )}
-            />
+            {CommentList}
             <Search
                 placeholder="写下你的评论..."
                 enterButton="发布"
