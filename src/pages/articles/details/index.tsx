@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-10 00:49:54
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-17 22:38:24
+ * @LastEditTime: 2022-05-18 17:07:11
  */
 import React, { useState, useEffect, useCallback } from 'react';
 import { Card, Button, Skeleton, message } from 'antd';
@@ -19,6 +19,7 @@ import { addArticleParam } from '@/request/api/api';
 import { UserInfoRes } from '../components/userInfo/index';
 import { getUserInfo } from '@/request/api/user';
 import { dateToString } from '@/utils/time';
+import { addResType } from '../type';
 
 export interface AnswerRes {
     id: number,
@@ -40,10 +41,6 @@ const primaryAnswer = {
     articleCover: '',
     articleDate: '', 
     articleTitle: ''
-}
-
-interface resType {
-    [propname: string]: string
 }
 
 const AddAnswerComponent = React.lazy(() => import('./addAnswer/index'));
@@ -88,7 +85,7 @@ const AticleDetail: React.FC<{}> = () => {
         };
         setAnswer(pre => [{...addParams, id: 0}, ...pre]);
         addAnswer(addParams).then((res) => {
-            const result = res as resType;
+            const result = res as addResType;
             if(result.message === '成功') {
                 message.success({
                     content: result.result,

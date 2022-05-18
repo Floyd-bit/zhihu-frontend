@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2022-05-13 23:19:22
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-18 00:13:06
+ * @LastEditTime: 2022-05-18 17:06:48
  */
 export interface resType<T> {
     code: number,
@@ -31,4 +31,8 @@ export interface commentType {
     answerId: number,
     pid: number,
     replyUserId: number
+}
+
+export interface addResType {
+    [propname: string]: string
 }

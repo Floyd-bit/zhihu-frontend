@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-09-29 18:40:12
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-15 20:33:42
+ * @LastEditTime: 2022-05-18 16:13:34
  */
 import { IConfig } from 'umi-types';
 
@@ -61,8 +61,11 @@ const config: IConfig =  {
           /components\//,
         ],
       },
+      links: [
+        { rel: 'icon', href: '<%= PUBLIC_PATH %>static/icon.png' }
+      ]
     }],
-  ],
+  ]
 }
 
 export default config;
