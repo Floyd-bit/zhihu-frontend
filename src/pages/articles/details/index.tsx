@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-10 00:49:54
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-18 17:07:11
+ * @LastEditTime: 2022-05-18 18:09:51
  */
 import React, { useState, useEffect, useCallback } from 'react';
 import { Card, Button, Skeleton, message } from 'antd';
@@ -12,6 +12,7 @@ import style from './index.css';
 import Article from '../components/article/article';
 import Answer, { primaryUser } from '../components/answers/index';
 import UserInfo from '../components/userInfo/index';
+import RelatedQuestions from './relatedQuestions/index';
 import { getArticleById } from '../../../request/api/article';
 import { getAnswersByAid, addAnswer } from '../../../request/api/answer';
 import { addAnswerParam } from '@/request/api/api';
@@ -137,6 +138,9 @@ const AticleDetail: React.FC<{}> = () => {
                     {answerList}
                 </div>
                 <div className={style.rightList}>
+                    <div style={{ margin: '10px 0' }}>
+                        <img src="https://pic3.zhimg.com/v2-d8e6003f9851149f05fb17c80c94d28f_720w.jpg?source=d6434cab" style={{ width: '100%' }}></img>
+                    </div>
                     <div className={style.about}>
                         <Card
                             hoverable
@@ -146,9 +150,12 @@ const AticleDetail: React.FC<{}> = () => {
                         </Card>
                     </div>
                     <div className={style.recommand}>
-                        <Card title="相关帖子" bordered={true}>
-                            
+                        <Card title="相关问题" bordered={true}>
+                            <RelatedQuestions/>
                         </Card>
+                    </div>
+                    <div style={{ margin: '10px 0' }}>
+                        <img src="https://pic2.zhimg.com/v2-831b4c2de9342a819ee5ed6cbf52b722_720w.jpg?source=d6434cab" style={{ width: '100%' }}></img>
                     </div>
                 </div>
             </div>

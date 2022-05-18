@@ -4,17 +4,32 @@
  * @Author: 赵卓轩
  * @Date: 2022-05-17 23:33:45
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-18 17:33:55
+ * @LastEditTime: 2022-05-18 20:09:35
  */
 import { commentType } from '@/pages/articles/type';
 import { MehTwoTone } from '@ant-design/icons';
 import { Comment, Avatar, Input } from 'antd';
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
+import { getUserInfo } from '@/request/api/user';
+import { UserInfoRes } from '../../userInfo';
 
 const CommentComponent:React.FC<{children: ReactNode, data: commentType, addCallback: Function}> = (props) => {
     const comment = props.data;
     const {Search} = Input;
     const [isReply, setIsReply] = useState(false);
+    const [userInfo, setUserInfo] = useState<UserInfoRes>();
+    const [replyUserName, setReplyUserName] = useState('');
+
+    useEffect(() => {
+      getUserInfo(comment.userId).then(res => {
+        const result = res as UserInfoRes;
+        setUserInfo(result);
+      });
+      comment.replyUserId && getUserInfo(comment.replyUserId).then(res => {
+        const result =  res as UserInfoRes;
+        setReplyUserName(result.username);
+      })
+    }, [comment]);
 
     const onSearch = (value: string) => {
       const pid = comment.pid ? comment.pid : comment.id;
@@ -35,8 +50,8 @@ const CommentComponent:React.FC<{children: ReactNode, data: commentType, addCall
     return (
         <Comment
         actions={[isReply ? replyArea : <span key="comment-nested-reply-to" onClick={() => setIsReply(true)}>回复</span>]}
-        author={<a>{comment.replyUserId ? `${comment.userId}回复给${comment.replyUserId}`: comment.userId}</a>}
-        avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />}
+        author={<a>{comment.replyUserId ? `${userInfo?.username} 回复给 ${replyUserName}`: userInfo?.username}</a>}
+        avatar={<Avatar src={userInfo?.avatar} alt={userInfo?.username} />}
         content={
           <p>{comment.content}</p>
         }
