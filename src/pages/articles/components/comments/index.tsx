@@ -4,14 +4,14 @@
  * @Author: 赵卓轩
  * @Date: 2022-04-28 17:39:55
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-18 20:00:18
+ * @LastEditTime: 2022-05-23 18:19:59
  */
 import { Card, Input, message } from 'antd';
 import React, {  useCallback, useEffect, useMemo, useState } from 'react';
 import { MehTwoTone } from '@ant-design/icons';
 import { getCommentByAid } from '@/request/api/comment';
 import { getAnswersByAid } from '@/request/api/answer';
-import { AnswerRes } from '../../details/index';
+import { AnswerRes } from '../../details';
 import { resType, commentType, addResType } from '../../type';
 import CommentComponent from './commentComponent';
 import { tranverseToTree, treeType } from '@/utils/commentTree';
@@ -57,6 +57,7 @@ const Comments: React.FC<{id: number, type: 'question' | 'answer'}> = (props) =>
             pid: pid,
             replyUserId: replyUserId
         };
+        console.log(aid);
         setComment((pre: Array<commentType>) => [...pre, newComment]);
         addComment(newComment).then(res => {
             const result = res as addResType;
@@ -74,7 +75,7 @@ const Comments: React.FC<{id: number, type: 'question' | 'answer'}> = (props) =>
 
     const onSearch = useCallback((value: string) => {
         commentOrReply(value, 0, 0);
-    }, []);
+    }, [aid]);
 
     const CommentList = useMemo(() => {
         const tree:Array<treeType> = tranverseToTree(comment);

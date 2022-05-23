@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-24 23:18:11
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2021-12-10 00:51:37
+ * @LastEditTime: 2022-05-23 17:14:04
  */
 import React, { useEffect, useState } from 'react';
 import Redirect from 'umi/redirect';
@@ -22,7 +22,7 @@ const AuthRouter =  (props:any) => {
   const [isLogin,setIsLogin] = useState(true);
   useEffect(() => {
     authentication().then(res => {
-        openNotification('登录成功 √','欢迎来到知乎 🎉🎉🎉');
+        // openNotification('登录成功 √','欢迎来到知乎 🎉🎉🎉');
         setIsLogin(true);
     },
     err => {

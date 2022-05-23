@@ -4,12 +4,18 @@
  * @Author: 赵卓轩
  * @Date: 2022-05-13 23:19:22
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-18 17:06:48
+ * @LastEditTime: 2022-05-23 16:40:52
  */
 export interface resType<T> {
     code: number,
     message: string,
     result: Array<T>
+}
+
+export interface resIdType<T> {
+    code: number,
+    message: string,
+    result: T
 }
 
 export interface articleType {

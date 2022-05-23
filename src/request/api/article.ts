@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-20 23:24:10
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-13 23:25:30
+ * @LastEditTime: 2022-05-23 16:30:31
  */
 import { get, post } from '../http';
 import { getArticleParam, addArticleParam } from './api';
@@ -28,4 +28,8 @@ export const searchArticle = (params: string) => {
 
 export const getVideo = () => {
     return get('/mock/video');
+}
+
+export const getSimilarQuestion = (params: number) => {
+    return get(`/mock/similar/${params}`);
 }

@@ -4,37 +4,54 @@
  * @Author: 赵卓轩
  * @Date: 2021-10-08 20:21:46
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-15 21:21:18
+ * @LastEditTime: 2022-05-23 18:10:30
  */
-import { CommentOutlined, SendOutlined, FireOutlined } from "@ant-design/icons";
+import { SendOutlined, FireOutlined } from "@ant-design/icons";
 import { Divider, Image } from "antd";
 import React from "react";
+import { articleType } from "../../type";
 import style from './hotArticle.css';
-import { hotArticleProps } from "./type";
+import { QuestionSort } from '@/utils/question';
+import Link from "umi/link";
 
-const HotArticle:React.FC<hotArticleProps> = (props: any) => {
-    return (
-        <>
+const HotArticle:React.FC<{data: Array<articleType>}> = (props) => {
+
+    const hotData = QuestionSort(props.data);
+
+    const HotArticleItem = (props: {data: articleType, index: number}) => {
+        const data = props.data;
+        return (
+            <Link to={`/articles/detail?id=${data.id}`} style={{color: 'black'}}>
             <div className={style.container}>
-                <div className={style.indexNumber}>1</div>
+                <div className={style.indexNumber}>{props.index + 1}</div>
                 <div className={style.text}>
-                    <div className={style.title}>{props.title}</div>
-                    <div className={style.description}>{props.description}</div>
+                    <div className={style.title}>{data.articleTitle}</div>
+                    <div className={style.description}>{data.articleAbstract}</div>
                     <div className={style.footer}>
-                        <span><FireOutlined />{props.hotNumber+'热度'}</span>
+                        <span><FireOutlined />{data.articleStar+'热度'}</span>
                         <span><SendOutlined />分享</span>
                     </div>
                 </div>
                 <div className={style.picture}>
                     <Image
                         width="100%"
-                        src={props.src}
+                        src={data.articleCover}
                     />
                 </div>
             </div>
-            <Divider />
-        </>
-    )
+            </Link>
+        )
+    };
+
+    const HotArticleList = hotData.map((item: articleType, index: number) => {
+        return (
+            <><HotArticleItem data={item} key={item.id} index={index}/><Divider /></>
+        )
+    })
+
+    return (
+        <>{HotArticleList}</>
+    );
 }
 
 export default React.memo(HotArticle);

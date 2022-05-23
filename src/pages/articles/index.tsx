@@ -4,7 +4,7 @@ import style from './index.css';
 import Animal from './components/article/article';
 import CreateDataShow from './components/createCenter/createDataShow';
 import Comments from './components/comments';
-
+import { RandomQuestion } from '@/utils/question';
 import router from 'umi/router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { getArticleByPage } from '../../request/api/article';
@@ -13,6 +13,7 @@ import videoPic from '../../assets/video.png';
 import articlePic from '../../assets/article.png';
 import ideaPic from '../../assets/idea.png';
 import livePic from '../../assets/liveIcon.png';
+import { articleType } from './type';
 
 
 const { TabPane } = Tabs;
@@ -36,7 +37,7 @@ const itemToPath = (item: any) => {
 
 
 const ArticleComponent: React.FC<{}> = () => {
-    const [articles, setArticles] = useState([]);
+    const [articles, setArticles] = useState<Array<articleType>>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
     const [isLoading, setIsLoading] = useState(true);
@@ -50,8 +51,7 @@ const ArticleComponent: React.FC<{}> = () => {
         setIsLoading(true);
         getArticleByPage({ page: currentPage, size: pageSize }).then((res: any) => {
             setArticles(res.result.content);
-            setTimeout(() => { setIsLoading(false) }, 1000);
-
+            setTimeout(() => { setIsLoading(false) }, 500);
         })
     }, [currentPage, pageSize]);
 
@@ -64,7 +64,24 @@ const ArticleComponent: React.FC<{}> = () => {
     }, [currentComment]);
 
     const animalList = useMemo(() => {
-        return articles.map((item: any, index: number) =>{
+        return articles.map((item: articleType, index: number) =>{
+            if(isLoading) {
+                return <Skeleton key={index} active />;
+            } else if(currentComment === -1 || currentComment !== item.id) {
+                return <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} star={item.articleStar} isClick={true} showBtn={true} showComment={showComment}/>;
+            } else {
+                return (
+                    <>
+                    <Animal key={item.id} title={item.articleTitle} description={item.articleAbstract} id={item.id} star={item.articleStar} isClick={true} showBtn={true} showComment={showComment}/>
+                    <Comments id={currentComment} type='question'/>
+                    </>
+                )
+            }
+    })}, [currentComment, articles, isLoading]);
+
+    const RecommendData = useMemo(() => {
+        const recommendData = RandomQuestion(articles);
+        return recommendData.map((item: articleType, index: number) =>{
             if(isLoading) {
                 return <Skeleton key={index} active />;
             } else if(currentComment === -1 || currentComment !== item.id) {
@@ -86,6 +103,12 @@ const ArticleComponent: React.FC<{}> = () => {
         switch (e.target.innerText) {
             case '写文章':
                 router.push('/articles/write');
+                break;
+            case '回答问题':
+                router.push('/waiting');
+                break;
+            case '发视频':
+                router.push('/articles/video');
                 break;
             default:
                 message.info('待开发');
@@ -125,7 +148,7 @@ const ArticleComponent: React.FC<{}> = () => {
                         </span>}
                         key="recommend"
                     >
-                        {animalList}
+                        {RecommendData}
                     </TabPane>
                     <TabPane
                         tab={<span>
@@ -135,7 +158,7 @@ const ArticleComponent: React.FC<{}> = () => {
                         key="hot"
                     >
                         <React.Suspense fallback={<Skeleton />}>
-                            <HotQuestion title={mockData.title} description={mockData.description} hotNumber={3336} src="https://pic1.zhimg.com/80/v2-1ff047be5330509bb33c34b2f374e7fe_400x224.jpg?source=1940ef5c"></HotQuestion>
+                            <HotQuestion data={articles}></HotQuestion>
                         </React.Suspense>
                     </TabPane>
                     <TabPane
@@ -181,7 +204,7 @@ const ArticleComponent: React.FC<{}> = () => {
                         </div>
                     </div>
                     <CreateDataShow/>
-                    <Button type="primary" style={{ width: '100%', marginTop: '10px' }} ghost>进入创作中心</Button>
+                    <Button type="primary" style={{ width: '100%', marginTop: '10px' }} ghost onClick={()=>{router.push('/articles/write')}}>进入创作中心</Button>
                 </Card>
                 <Card bordered={true} style={{ marginTop: '10px', padding: '1em' }} onClick={gridClick}>
                     <img src={livePic} style={{ width: '100%' }}></img>

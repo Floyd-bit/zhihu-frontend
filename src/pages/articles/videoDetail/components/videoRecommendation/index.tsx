@@ -4,9 +4,9 @@
  * @Author: 赵卓轩
  * @Date: 2022-05-04 22:41:16
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-16 01:02:23
+ * @LastEditTime: 2022-05-23 18:32:42
  */
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import styles from './index.css';
 import { Image } from "antd";
 import { videoType } from "@/pages/articles/components/videoGrid/type";
@@ -38,7 +38,6 @@ const VideoRecommendation:React.FC<{data: Array<videoType>}> = (props) => {
             </div>
         )
     }
-
     return (
         <div>
             {data.map((item: videoType, index: number) => {

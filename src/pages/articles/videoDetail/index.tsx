@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2022-05-04 21:43:51
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-18 17:14:15
+ * @LastEditTime: 2022-05-23 18:23:19
  */
 import React, { useEffect, useState } from "react";
 import styles from './index.css';
@@ -44,7 +44,7 @@ const VideoDetail = () => {
             <div className={styles.mainColumn}>
                 <VideoPlayer {...videoData}/>
                 <div style={{ marginTop: '1em' }}>
-                    <Comments type="answer" id={1}/>
+                    <Comments type="answer" id={100}/>
                 </div>
             </div>
             <div className={styles.sideColumn}>

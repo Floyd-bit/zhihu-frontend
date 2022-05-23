@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2021-12-10 00:49:54
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-18 18:09:51
+ * @LastEditTime: 2022-05-23 17:12:37
  */
 import React, { useState, useEffect, useCallback } from 'react';
 import { Card, Button, Skeleton, message } from 'antd';
@@ -151,7 +151,7 @@ const AticleDetail: React.FC<{}> = () => {
                     </div>
                     <div className={style.recommand}>
                         <Card title="相关问题" bordered={true}>
-                            <RelatedQuestions/>
+                            <RelatedQuestions id={parseInt(id)}/>
                         </Card>
                     </div>
                     <div style={{ margin: '10px 0' }}>
