@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2022-05-04 21:44:41
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-05-15 22:09:01
+ * @LastEditTime: 2022-05-23 22:49:38
  */
 import { CaretDownOutlined, CaretUpOutlined, CommentOutlined, HeartOutlined, SendOutlined, StarOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
@@ -46,10 +46,10 @@ const VideoPlayer:React.FC<videoType> = (props) => {
 
     const sources = {
         hd: {
-          play_url: props.videoUrl,
+          play_url: 'https://zhstatic.zhihu.com/cfe/griffith/zhihu2018_hd.mp4',
         },
         sd: {
-          play_url: props.videoUrl,
+          play_url: 'https://zhstatic.zhihu.com/cfe/griffith/zhihu2018_hd.mp4',
         },
     }
 

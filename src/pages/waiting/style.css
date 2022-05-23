@@ -16,7 +16,7 @@
     position: fixed;
     z-index: 2;
     height: 68px;
-    width: 694px;
+    width: 812px;
     top: 74px;
     left: 174.5px;
   }
@@ -26,7 +26,7 @@
     height: 78px;
     position: absolute;
     bottom: 0;
-    width: 700px;
+    width: 812px;
     z-index: -1;
     background: #F0F2F5;
   }

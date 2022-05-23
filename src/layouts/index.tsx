@@ -123,7 +123,7 @@ const BasicLayout: React.FC = props => {
         <div style={{ position: 'absolute', color: 'white', right: '25px', top: '-4px' }}>
           <Popover content={downContent} placement="bottom">
             <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>
-              {localStorage.getItem('username')?.charAt(0)}
+              {sessionStorage.getItem('username')?.charAt(0)}
             </Avatar>
             <span style={{ display: 'inline-block', marginLeft: '10px' }}>Floyd</span>
           </Popover>
@@ -134,7 +134,7 @@ const BasicLayout: React.FC = props => {
           {props.children}
         </div>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>ZHIHU ©2021 Created by 你说的都对</Footer>
+      <Footer style={{ textAlign: 'center' }}>ZHIHU ©2021 Created by zzx hhj</Footer>
     </Layout>
   );
 };

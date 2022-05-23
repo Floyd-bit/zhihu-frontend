@@ -4,7 +4,7 @@
  * @Author: 赵卓轩
  * @Date: 2022-04-28 22:34:26
  * @LastEditors: 赵卓轩
- * @LastEditTime: 2022-04-30 18:25:25
+ * @LastEditTime: 2022-05-23 22:51:02
  */
 import { UserOutlined } from '@ant-design/icons';
 import { Button, Card, List, message } from 'antd';
@@ -37,6 +37,12 @@ const Waiting: React.FC<{}> = () => {
         switch (e.target.innerText) {
             case '写文章':
                 router.push('/articles/write');
+                break;
+            case '回答问题':
+                router.push('/waiting');
+                break;
+            case '发视频':
+                router.push('/articles/video');
                 break;
             default:
                 message.info('待开发');
@@ -84,9 +90,9 @@ const Waiting: React.FC<{}> = () => {
                 </div>
                 </div>
                 <div className={style.questions}>
-                    <Question/>
-                    <Question/>
-                    <Question/>
+                    <Question userName='Floyd' question='如何看待申通工作人员抛扔快递，表示「每单十来块不敢保证质量，建议发顺丰」，官方回应称开除言论不当人员？' answers={2} subscribe={233} days={3} id={20}/>
+                    <Question userName='Niko' question='如何看待立陶宛声称准备向乌克兰提供致命武器？' answers={1} subscribe={13} days={1} id={23}/>
+                    <Question userName='Simple' question='新冠疫情会不会被写进历史书？' answers={1} subscribe={1} days={1} id={34}/>
                 </div>
             </div>
             <div className={style.rightColumn}>
