@@ -15,7 +15,7 @@ React仿知乎页面
 
 #### 架構
 
-基于umi框架
+采用React和TypeScript进行开发，基于umi脚手架进行前端工程化的配置和打包构建，搭配上Ant Design、Antd Pro Component组件库。HTTP请求采用axios库，使用Promise管理异步，告别传统callback方式。
 
 #### 安装说明
 
@@ -23,13 +23,5 @@ React仿知乎页面
 2. yarn start
 
 #### 界面截图
-![输入图片说明](captureimage.png)
-
-![输入图片说明](captureimage.png)
-![输入图片说明](captureimage.png)
-![输入图片说明](captureimage.png)
-![输入图片说明](captureimage.png)
-![输入图片说明](captureimage.png)
-![输入图片说明](captureimage.png)
-![输入图片说明](captureimage.png)
-![输入图片说明](captureimage.png)
+![登录](capture/image.png)
+![首页](capture/image1.png)
