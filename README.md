@@ -22,7 +22,14 @@ React仿知乎页面
 1. yarn install
 2. yarn start
 
-#### 使用說明
+#### 界面截图
+![输入图片说明](captureimage.png)
 
-1. 后端接口地址: <https://47.119.125.69:8443>
-2. 后端接口文档地址: <http://47.119.125.69:8443/swagger-ui.html#/>
+![输入图片说明](captureimage.png)
+![输入图片说明](captureimage.png)
+![输入图片说明](captureimage.png)
+![输入图片说明](captureimage.png)
+![输入图片说明](captureimage.png)
+![输入图片说明](captureimage.png)
+![输入图片说明](captureimage.png)
+![输入图片说明](captureimage.png)
