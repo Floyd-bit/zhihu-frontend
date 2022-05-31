@@ -18,12 +18,12 @@ const config: IConfig =  {
   // 代理到其他服务器
   proxy: {
     "/api": {
-      "target": "",
+      "target": "http://121.37.213.242:8443",
       "changeOrigin": true,
       "pathRewrite": {"^/api": "/api"}
     },
     "/mock": {
-      "target": "",
+      "target": "https://service-9ngbcie8-1305610595.gz.apigw.tencentcs.com/release",
       "changeOrigin": true,
       "pathRewrite": {"^/mock": ""}
     }
